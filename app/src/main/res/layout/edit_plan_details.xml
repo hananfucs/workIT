@@ -1,0 +1,191 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Name"
+            android:layout_alignRight="@+id/linearLayout"/>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/plan_name"
+            android:layout_gravity="center_horizontal"
+            android:lines="1"
+            android:singleLine="true"
+            />
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="100px" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Trainer"
+                android:layout_alignRight="@+id/linearLayout"
+                android:lines="1"
+                android:singleLine="true"
+                />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+            <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/trainer_name"
+                android:layout_gravity="center_horizontal"
+                android:lines="1"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                />
+
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="100px" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Club"
+                android:layout_alignRight="@+id/linearLayout"/>
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/club_name"
+                android:layout_gravity="center_horizontal"
+                android:lines="1"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Times per week"
+                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
+                android:layout_alignRight="@+id/linearLayout"/>
+
+            <NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/daysPicker" />
+
+        </LinearLayout>
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_weight="1"
+                android:text="Expiration: "
+                android:layout_alignRight="@+id/linearLayout"/>
+
+            <Button
+                android:id="@+id/expiration_button"
+                android:text="Choose Date..."
+                android:onClick="openCalander"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+<Space
+    android:layout_width="fill_parent"
+    android:layout_height="50px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Exercises"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:onClick="openPlanContent"/>
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="100px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Save"
+            android:id="@+id/save_plan"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:onClick="saveAndReturn"/>
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="100px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Delete Plan"
+            android:id="@+id/delete_plan"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:onClick="deletePlan"/>
+    </LinearLayout>
+
+</RelativeLayout>

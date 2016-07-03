@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hf.workit" >
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".components.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo8"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.EditPlanDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EditExerciseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EditPlanContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EditPlansListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SelectWorkoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WorkoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ExecuteExercise"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WorkoutLogActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PlanExecutionSummaryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PlanExercisesSummaryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ExerciseExecutionSummaryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MainLog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CardioSummaryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AddCardioWorkoutFloat"
+            android:theme="@style/AppThemeDialog"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".components.ClockService" />
+
+    </application>
+
+</manifest>

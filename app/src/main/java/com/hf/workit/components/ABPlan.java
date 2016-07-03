@@ -1,0 +1,102 @@
+package com.hf.workit.components;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+/**
+ * Created by hanan on 12/09/15.
+ */
+public class ABPlan implements IPlan {
+    private String mId;
+    private String mPlanName;
+    private String mCoachName;
+    private String mClubName;
+    private int mTimesPerWeek;
+    private long mCreationTime;
+    ArrayList<IExercise> mExerciseList;
+
+    private String mFileName;
+
+
+    public ABPlan(String planName, String coachName, String clubName, int timesPerWeek, ArrayList<IExercise> exercises, String fileName, boolean isNew, long creationTime){
+        mPlanName = planName;
+        mCoachName = coachName;
+        mClubName = clubName;
+        mTimesPerWeek = timesPerWeek;
+        mExerciseList = exercises;
+        mId = UUID.randomUUID().toString();
+        if (isNew)
+            mCreationTime = System.currentTimeMillis();
+        else
+            mCreationTime = creationTime;
+    }
+
+
+    @Override
+    public String planId() {
+        return mId;
+    }
+
+    @Override
+    public String getTitle() {
+        return mPlanName;
+    }
+
+
+    @Override
+    public String getCoach() {
+        return mCoachName;
+    }
+
+    @Override
+    public String getClub() {
+        return mClubName;
+    }
+
+    @Override
+    public int getTimes() {
+        return mTimesPerWeek;
+    }
+
+
+    @Override
+    public ArrayList<IExercise> getExercises() {
+        return mExerciseList;
+    }
+
+    @Override
+    public void setExercises(ArrayList<IExercise> exercises) {
+        mExerciseList = exercises;
+    }
+
+    @Override
+    public String getFileName() {
+        return mFileName;
+    }
+
+    @Override
+    public long getmCreationTime() {
+        return mCreationTime;
+    }
+
+    @Override
+    public JSONObject getJson() throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put(Constatnts.PlanJson.ID, mId);
+        json.put(Constatnts.PlanJson.TIMES_PER_WEEK, mTimesPerWeek);
+        json.put(Constatnts.PlanJson.NAME, mPlanName);
+        json.put(Constatnts.PlanJson.CLUB, mClubName);
+        json.put(Constatnts.PlanJson.TRAINER, mCoachName);
+        json.put(Constatnts.PlanJson.CREATION_TIME, mCreationTime);
+        json.put(Constatnts.PlanJson.TYPE, "ab");
+        return json;
+    }
+
+    @Override
+    public long getExpirationTime() {
+        return 0;
+    }
+}

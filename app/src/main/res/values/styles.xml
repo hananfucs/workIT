@@ -1,0 +1,83 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:background">#0a081a</item>
+        <item name="android:buttonStyle">@style/MyButton</item>
+        <item name="android:editTextStyle">@style/EditTextCustom</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutocompleteEditTextCustom</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style name="AppThemeDialog" parent="android:Theme.Holo.Light.Dialog.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:background">#0a081a</item>
+        <item name="android:buttonStyle">@style/MyButton</item>
+        <item name="android:editTextStyle">@style/EditTextCustom</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutocompleteEditTextCustom</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+
+
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <!--<item name="android:colorBackground">#0a081a</item>-->
+        <!--<item name="android:background">#0a081a</item>-->
+        <!--<item name="android:logo">@android:color/transparent</item>-->
+        <item name="android:titleTextStyle">@style/MyTitleText</item>
+    </style>
+
+    <style name="MyTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <!--<item name="android:colorBackground">#FF000000</item>-->
+        <!--<item name="android:color">#FF000000</item>-->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">50dp</item>
+        <!--<item name="android:-->
+    </style>
+
+
+    <style name="MyButton" parent="android:Widget.Button.Inset">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:background">@drawable/custom_button_bg</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:buttonBarButtonStyle">@style/MyButtonBar</item>
+        <item name="android:colorBackground">#0a081a</item>
+        <item name="android:colorForeground">#0a081a</item>
+        <item name="android:centerColor">#0a081a</item>
+        <item name="android:buttonStyle">@style/MyButton</item>
+    </style>
+
+    <style name="MyButtonBar" parent="@android:style/ButtonBar">
+        <item name="android:buttonStyle">@style/MyButton</item>
+        <item name="android:colorBackground">#0a081a</item>
+    </style>
+
+    <style name="EditTextCustom" parent="@android:style/Widget.EditText">
+        <item name="android:background">#FF434343</item>
+    </style>
+
+    <style name="AutocompleteEditTextCustom" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:background">#FF434343</item>
+    </style>
+
+
+
+
+
+</resources>

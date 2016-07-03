@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="#000000"
+        android:dividerHeight="4px"
+        android:id="@android:id/list">
+    </ListView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Finish Workout "
+        android:onClick="finishWorkout"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:layout_gravity="center_horizontal" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="5dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Edit Plan "
+        android:onClick="editPlan"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:layout_gravity="center_horizontal" />
+
+
+
+</LinearLayout>
