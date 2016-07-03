@@ -100,13 +100,13 @@ public class AppTester {
         Utils.getDBHelper().addCardio(exerciseID, 20, 3.0f, 240, 1461252161000L);
         Utils.getDBHelper().addCardio(exerciseID, 20, 3.05f, 230, 1461424961000L);
         Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1461697761000L);
-        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1461797761000L);
-        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1461897761000L);
-        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1461997761000L);
-        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462097761000L);
-        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462197761000L);
-        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462297761000L);
-        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462397761000L);
+//        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1461797761000L);
+//        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1461897761000L);
+//        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1461997761000L);
+//        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462097761000L);
+//        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462197761000L);
+//        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462297761000L);
+//        Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462397761000L);
     }
 
     private static boolean checkForExistingRecords() {

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hf.workit.R;
+import com.hf.workit.components.Constatnts;
 import com.hf.workit.components.IExercise;
 import com.hf.workit.components.Utils;
 
@@ -61,6 +62,26 @@ public class AddCardioWorkoutFloat extends Activity {
         mCaloriesText = (EditText)findViewById(R.id.new_cardio_calories);
         mCaloriesText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
         mDateButton = (Button)findViewById(R.id.new_cardio_date);
+
+
+        TextView tv = (TextView)findViewById(R.id.cardio_time_text_view);
+        int meas = tv.getMeasuredWidth();
+        int tvWidth = tv.getWidth();
+        mTimeText.setWidth(meas);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        TextView tv = (TextView)findViewById(R.id.cardio_time_text_view);
+        int meas = tv.getMeasuredWidth();
+        mTimeText.setWidth(meas);
+        mDistanceText.setWidth(meas);
+        mCaloriesText.setWidth(meas);
+
+        Button cancelBT = (Button)findViewById(R.id.cancel_cardio_button);
+        Button addBT = (Button)findViewById(R.id.add_cardio_button);
+        addBT.setWidth(cancelBT.getWidth());
     }
 
     public void addCardioWorkoutToLog(View view) {
@@ -93,6 +114,7 @@ public class AddCardioWorkoutFloat extends Activity {
         LinearLayout ll= (LinearLayout)inflater.inflate(R.layout.calander_alert, null, false);
         CalendarView cv = (CalendarView) ll.getChildAt(0);
         cv.setDate(System.currentTimeMillis());
+        cv.setMaxDate(System.currentTimeMillis());
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,

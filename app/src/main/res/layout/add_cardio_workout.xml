@@ -8,6 +8,7 @@
         android:orientation="horizontal"
         android:layout_height="fill_parent">
     <TextView
+        android:id="@+id/cardio_time_text_view"
         android:layout_width="wrap_content"
         android:text="Time:"
         android:layout_weight="1"
@@ -30,6 +31,7 @@
         android:layout_height="fill_parent">
         <TextView
             android:layout_width="wrap_content"
+            android:id="@+id/cardio_distance_text_view"
             android:text="Distance:"
             android:singleLine="true"
             android:layout_weight="1"
@@ -52,6 +54,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_weight="1"
+            android:id="@+id/cardio_calories_text_view"
             android:singleLine="true"
             android:text="Calories:"
             android:layout_height="wrap_content" />
@@ -61,8 +64,8 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/new_cardio_calories"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
+            android:layout_width="fill_parent"
+                android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -93,20 +96,22 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_height="fill_parent">
         <Button
-            android:layout_width="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/add_cardio_button"
+            android:layout_width="wrap_content"
             android:text="Add"
             android:onClick="addCardioWorkoutToLog"
             android:textSize="15dp"
             android:layout_height="wrap_content" />
 
         <Button
-            android:layout_width="match_parent"
+            android:id="@+id/cancel_cardio_button"
+            android:layout_width="wrap_content"
             android:text="Cancel"
             android:onClick="cancel"
-            android:layout_weight="1"
             android:textSize="15dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
