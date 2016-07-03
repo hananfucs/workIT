@@ -107,7 +107,6 @@ public class AppTester {
         Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462197761000L);
         Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462297761000L);
         Utils.getDBHelper().addCardio(exerciseID, 20, 3.1f, 270, 1462397761000L);
-//        Utils.getDBHelper().addCardio(exerciseID, 22, 3.2f, 288, 1467320039975L);
     }
 
     private static boolean checkForExistingRecords() {

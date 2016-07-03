@@ -70,7 +70,6 @@ public class PlanExercisesSummaryActivity extends Activity implements Expandable
             List<String> exerciseDetails = new ArrayList<String>();
             exerciseDetails.add(CURRENT_WEIGHT + exercise.getWeight());
             exerciseDetails.add(COMPLETED + LogManager.getExerciseAverageCompletion(String.valueOf(exercise.getId())));
-//            listDataChild.put(String.valueOf(exercise.getId()), exerciseDetails); // Header, Child data
             listDataChild.put(exercise.getTitle() + " - " + exercise.getExercise(), exerciseDetails); // Header, Child data
         }
 

@@ -4,17 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -22,8 +18,6 @@ import android.widget.Toast;
 
 import com.hf.workit.R;
 import com.hf.workit.components.IExercise;
-import com.hf.workit.components.IPlan;
-import com.hf.workit.components.LogManager;
 import com.hf.workit.components.PlanManager;
 import com.hf.workit.components.Utils;
 
@@ -31,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -70,16 +63,11 @@ public class CardioLogFragment extends ListFragment {
     }
 
     private void addExercise() {
-        Log.d("HHH", "addExercise");
-        // Creating alert Dialog with one Button
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
 
-        //AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
 
-        // Setting Dialog Title
         alertDialog.setCustomTitle(Utils.createTitleView(getActivity(), "Add Cardio Exercise"));
 
-        // Setting Dialog Message
         alertDialog.setMessage("Exercise Name:");
         final EditText input = new EditText(getActivity());
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -105,7 +93,6 @@ public class CardioLogFragment extends ListFragment {
                         return true;
                     }
                 });
-        // Setting Negative "NO" Button
         alertDialog.setNegativeButton("Cancel",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -114,9 +101,7 @@ public class CardioLogFragment extends ListFragment {
                     }
                 });
 
-        // closed
         AlertDialog dia = alertDialog.create();
-        // Showing Alert Message
         dia.show();
     }
 
@@ -139,14 +124,6 @@ public class CardioLogFragment extends ListFragment {
         });
         adapter.notifyDataSetChanged();
     }
-
-//    @Override
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Intent intent = new Intent(getActivity(), CardioSummaryActivity.class);
-////        intent.putExtra(IPlan.PLAN_NAME, mCurrentPlan);
-////        intent.putExtra(IExercise.EXERCISE_ID, (int) mExercisesIds.get((int) id));
-//        startActivity(intent);
-//    }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {

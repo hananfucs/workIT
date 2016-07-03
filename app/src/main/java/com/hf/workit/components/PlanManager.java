@@ -332,28 +332,6 @@ public class PlanManager {
             acExName.add(receiveString);
         if (currentType.equals(Constatnts.AC_DESCRIPTION))
             acExDescription.add(receiveString);
-
-
-        /*
-
-        switch (currentType) {
-            case Constatnts.AC_CLUB:
-                acClub.add(receiveString);
-                break;
-            case Constatnts.AC_TRAINER:
-                acTrainer.add(receiveString);
-                break;
-            case Constatnts.AC_MUSCLE:
-                acMuscle.add(receiveString);
-                break;
-            case Constatnts.AC_NAME:
-                acExName.add(receiveString);
-                break;
-            case Constatnts.AC_DESCRIPTION:
-                acExDescription.add(receiveString);
-                break;
-        }
-        */
     }
 
     public static void addToAcTrainer(String value) {

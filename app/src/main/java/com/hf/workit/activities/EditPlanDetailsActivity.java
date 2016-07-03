@@ -149,7 +149,6 @@ public class EditPlanDetailsActivity extends Activity {
     public void saveAndReturn(View v) {
         if (!savePlan(isNew))
             Utils.popToast(this, "Nothing to save", Toast.LENGTH_SHORT);
-//            Toast.makeText(this, "Nothing to save", Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -174,13 +173,6 @@ public class EditPlanDetailsActivity extends Activity {
 
         PlanManager.addPlan(planName, newPlan);
         return true;
-    }
-
-    public void setSingle(View v){
-        isSingle = true;
-    }
-    public void setAB(View v){
-        isSingle = false;
     }
 
     @Override

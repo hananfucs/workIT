@@ -52,12 +52,6 @@ public class CardioSummaryActivity extends Activity {
     private boolean isCubic = false;
     private boolean hasLabelForSelected = false;
 
-    private TextView mExerciseNameText;
-    private TextView mMuscleNameText;
-    private TextView mPlanNameText;
-    private TextView mCompletionText;
-
-
     private LineChartView mChart;
     private LineChartData data;
 

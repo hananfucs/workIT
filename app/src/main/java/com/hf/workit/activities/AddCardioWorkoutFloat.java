@@ -73,7 +73,6 @@ public class AddCardioWorkoutFloat extends Activity {
         else{
             Utils.getDBHelper().addCardio(currentWorkoutId, duration, distance, calories, mWorkoutDate);
             Intent returnIntent = new Intent();
-//        returnIntent.putExtra("completed", setsCounter);
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
             finish();
@@ -133,7 +132,6 @@ public class AddCardioWorkoutFloat extends Activity {
 
     public void cancel(View V) {
         Intent returnIntent = new Intent();
-//        returnIntent.putExtra("completed", setsCounter);
         setResult(Activity.RESULT_CANCELED, returnIntent);
         finish();
     }

@@ -15,7 +15,6 @@ public class SinglePlan implements IPlan {
     private String mCoachName;
     private String mClubName;
     private int mTimesPerWeek;
-    String fileName;
     ArrayList<IExercise> mExerciseList;
 
     private String mFileName;

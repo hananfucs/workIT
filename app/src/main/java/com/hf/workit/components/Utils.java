@@ -35,10 +35,8 @@ public class Utils {
     public static void popToast(Context context, String text, int length) {
         Toast toast = Toast.makeText(context, text, length);
         View view = toast.getView();
-//        view.setBackgroundColor(Color.parseColor("#FF434343"));
         view.setBackgroundColor(Color.parseColor("#FF000000"));
         TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-//        v.setBackgroundColor(Color.parseColor("#FF434343"));
         v.setBackgroundColor(Color.parseColor("#FF000000"));
         toast.setView(view);
         toast.show();

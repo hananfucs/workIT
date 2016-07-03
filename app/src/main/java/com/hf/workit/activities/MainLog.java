@@ -91,8 +91,6 @@ public class MainLog extends FragmentActivity implements ActionBar.TabListener, 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, EditExerciseActivity.class);
-//        intent.putExtra(IPlan.PLAN_NAME, mCurrentPlan);
-//        intent.putExtra(IExercise.EXERCISE_ID, (int) mExercisesIds.get((int) id));
         startActivity(intent);
     }
 }

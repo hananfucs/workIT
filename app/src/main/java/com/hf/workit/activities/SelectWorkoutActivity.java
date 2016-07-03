@@ -40,7 +40,6 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
         super.onResume();
         mPlans = PlanManager.getPlans();
 
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mPlansNames);
         adapter = new ArrayAdapter<String>(this, R.layout.listview_reg, mPlansNames);
         setListAdapter(adapter);
 

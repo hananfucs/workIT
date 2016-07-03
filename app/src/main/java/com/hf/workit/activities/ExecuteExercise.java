@@ -14,10 +14,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -64,7 +61,6 @@ public class ExecuteExercise extends Activity {
     private TextView mBreakClockText;
 
     private Button mStartButton;
-    private Button mDoneButton;
 
     private String mCurrentPlan;
     private int currentExerciseID;
@@ -80,12 +76,6 @@ public class ExecuteExercise extends Activity {
     private int mBreakTime;
     private int mAmount;
     private int mAmount2;
-
-    private boolean isInBreak = false;
-    private boolean isInDrill = false;
-
-
-//    private ClockHandler mClockHandler;
     private Context mContext;
 
     private ClockReceiver mClockReceiver;
@@ -105,12 +95,10 @@ public class ExecuteExercise extends Activity {
         mCurrentExercise = PlanManager.getExerciseFromPlan(mCurrentPlan, currentExerciseID);
         mCurrentExerciseJson = mCurrentExercise.toJson();
         mCurrentPhase = getIntent().getIntExtra("last_phase", 0);
-//        mClockHandler = new ClockHandler();
         getUIComponents();
         try {
             fillTexts();
         } catch (JSONException e) {}
-//        setClockThread();
         mContext = this;
         getActionBar().setTitle(mCurrentExercise.getTitle().toUpperCase());
         registerClockReceiver();
@@ -163,7 +151,6 @@ public class ExecuteExercise extends Activity {
         mBreakClockText = (TextView)findViewById(R.id.break_clock);
         mBreakClockText.setText("");
         mStartButton = (Button)findViewById(R.id.button_start);
-//        mDoneButton = (Button)findViewById(R.id.button_done);
         mClockText.setTypeface(null, Typeface.BOLD);
 
 
@@ -192,7 +179,6 @@ public class ExecuteExercise extends Activity {
                 start(null);
             else {
                 done(null);
-//                mStartButton.setText("START");
             }
         }
     }
@@ -261,12 +247,10 @@ public class ExecuteExercise extends Activity {
         } else {
             if (mCurrentPhase == PHASE_EX_1) {
                 int drillTime = mAmount;
-//                setAndStartClockThread(drillTime);
                 startClockService(drillTime, PHASE_EX_1, (String) mExerciseNameText.getText());
             }
             else if (mCurrentPhase == PHASE_EX_2) {
                 int drillTime = mAmount2;
-//                setAndStartClockThread(drillTime);
                 startClockService(drillTime, PHASE_EX_2, (String) mExerciseNameText2.getText());
             }
         }
@@ -320,16 +304,11 @@ public class ExecuteExercise extends Activity {
             e.printStackTrace();
         }
         mSetsLeftText.setText(String.valueOf(setsCounter));
-//        setAndStartClockThread(mBreakTime);
         startClockService(mBreakTime, PHASE_BREAK, null);
         mClockText.setVisibility(View.INVISIBLE);
         if (mClockText2 != null)
             mClockText2.setVisibility(View.INVISIBLE);
         mBreakClockText.setVisibility(View.VISIBLE);
-        //////
-
-
-
     }
 
     @Override

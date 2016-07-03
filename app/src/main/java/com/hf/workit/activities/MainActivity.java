@@ -32,9 +32,6 @@ public class MainActivity extends Activity {
     private FrameLayout mainFrame;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
-
 
     private String[] sideMenuTitles = {"Start Workout", "Workout Log", "Edit Plans"};
 
@@ -102,8 +99,6 @@ public class MainActivity extends Activity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-//        menu.findItem(android.R.id.extractArea).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
 
     }
@@ -121,7 +116,6 @@ public class MainActivity extends Activity {
     }
 
     public void startLogActivity() {
-//        Intent intent = new Intent(this, WorkoutLogActivity.class);
         Intent intent = new Intent(this, MainLog.class);
         startActivity(intent);
     }

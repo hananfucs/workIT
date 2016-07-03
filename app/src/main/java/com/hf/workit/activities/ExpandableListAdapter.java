@@ -64,8 +64,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         String thingA = this._listDataHeader.get(groupPosition);
         List<String> thing = this._listDataChild.get(thingA);
         return thing.size();
-//        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-//                .size();
     }
 
     @Override
