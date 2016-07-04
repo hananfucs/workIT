@@ -76,8 +76,6 @@ public class WorkoutLogActivity extends Activity implements ExpandableListView.O
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        Log.d("HHH", "groupPosition: " + groupPosition + " childPosition: " + childPosition + " id: " + id);
-
         Intent intent = new Intent(this, PlanExecutionSummaryActivity.class);
         intent.putExtra(IPlan.PLAN_NAME, listDataHeader.get(groupPosition));
         startActivity(intent);

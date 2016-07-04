@@ -225,7 +225,6 @@ public class EditPlanDetailsActivity extends Activity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Log.d("HHH", "date:" + dayOfMonth + ":" + month + ":" + year);
                 setExpirationButtonText(dayOfMonth, month + 1, year);
                 dialog.dismiss();
             }

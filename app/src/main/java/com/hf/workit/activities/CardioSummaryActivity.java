@@ -23,6 +23,8 @@ import com.hf.workit.components.PlanManager;
 import com.hf.workit.components.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
@@ -95,15 +97,6 @@ public class CardioSummaryActivity extends Activity {
         // Disable viewport recalculations, see toggleCubic() method for more info.
         mChart.setViewportCalculationEnabled(false);
         resetViewport(dataType);
-    }
-
-    private void prepareDataAnimation() {
-        for (Line line : data.getLines()) {
-            for (PointValue value : line.getValues()) {
-                // Here I modify target only for Y values but it is OK to modify X targets as well.
-                value.setTarget(value.getX(), (float) Math.random() * 100);
-            }
-        }
     }
 
     private void generateData(int dataType) {
@@ -267,6 +260,19 @@ public class CardioSummaryActivity extends Activity {
             executions.add(execution);
         } while (cursor.moveToNext());
         cursor.close();
+        Collections.sort(executions, new Comparator<ExerciseExecution>() {
+            @Override
+            public int compare(ExerciseExecution lhs, ExerciseExecution rhs) {
+                int ret = 0;
+                if(lhs.date - rhs.date < 0)
+                    ret = -1;
+                else if (lhs.date - rhs.date > 0)
+                    ret = 1;
+                else if (lhs.date - rhs.date == 0)
+                    ret = 0;
+                return ret;
+            }
+        });
     }
 
     private List<Float> generatePointsAxis() {
@@ -277,8 +283,6 @@ public class CardioSummaryActivity extends Activity {
         for (int i = 0; i < numOfDays; i++) {
             ret.add((float) i);
         }
-        Log.d("HHH", "points size: " + ret.size());
-
         return ret;
     }
 
@@ -291,7 +295,6 @@ public class CardioSummaryActivity extends Activity {
             String date = (String) DateFormat.format("dd/MM", (firstWorkout + (i * Constatnts.DAY_MILLIS)));
             ret.add(date);
         }
-        Log.d("HHH", "dates size: " + ret.size());
         return ret;
     }
 

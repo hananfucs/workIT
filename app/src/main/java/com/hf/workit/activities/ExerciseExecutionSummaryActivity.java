@@ -215,8 +215,6 @@ public class ExerciseExecutionSummaryActivity extends Activity {
         for (int i = 0; i < numOfDays; i++) {
             ret.add((float) i);
         }
-        Log.d("HHH", "points size: " + ret.size());
-
         return ret;
     }
 
@@ -229,7 +227,6 @@ public class ExerciseExecutionSummaryActivity extends Activity {
             String date = (String) DateFormat.format("dd/MM", (firstWorkout + (i * Constatnts.DAY_MILLIS)));
             ret.add(date);
         }
-        Log.d("HHH", "dates size: " + ret.size());
         return ret;
     }
 

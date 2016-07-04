@@ -77,8 +77,6 @@ public class PlanExercisesSummaryActivity extends Activity implements Expandable
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        Log.d("HHH", "groupPosition: " + groupPosition + " childPosition: " + childPosition + " id: " + id);
-
         Intent intent = new Intent(this, ExerciseExecutionSummaryActivity.class);
         intent.putExtra(IPlan.PLAN_NAME, planID);
         intent.putExtra(IExercise.EXERCISE_ID, exercisesIDs.get(groupPosition));

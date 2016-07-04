@@ -69,11 +69,6 @@ public class WorkoutActivity extends ListActivity implements AdapterView.OnItemC
             public int compare(IExercise lhs, IExercise rhs) {
                 return lhs.getTitle().compareToIgnoreCase(rhs.getTitle());
             }
-
-//            @Override
-//            public int compare(String lhs, String rhs) {
-//                return lhs.compareToIgnoreCase(rhs);
-//            }
         });
         lv = (ListView)findViewById(android.R.id.list);
         lv.setOnItemClickListener(this);
