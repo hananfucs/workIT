@@ -1,13 +1,17 @@
 package com.hf.workit.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.Pair;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hf.workit.R;
 import com.hf.workit.components.Constatnts;
@@ -42,6 +46,7 @@ public class ExerciseExecutionSummaryActivity extends Activity {
     private boolean hasLabels = false;
     private boolean isCubic = false;
     private boolean hasLabelForSelected = false;
+    private Context mContext;
 
     private TextView mExerciseNameText;
     private TextView mMuscleNameText;
@@ -65,11 +70,24 @@ public class ExerciseExecutionSummaryActivity extends Activity {
     public void onCreate(Bundle bd) {
         super.onCreate(bd);
         setContentView(R.layout.exercise_execution_summary);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+//                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mContext = this;
         mExerciseID = Integer.parseInt(getIntent().getStringExtra(IExercise.EXERCISE_ID));
         mPlanID = getIntent().getStringExtra(IPlan.PLAN_NAME);
 
@@ -256,7 +274,7 @@ public class ExerciseExecutionSummaryActivity extends Activity {
     private class ValueTouchListener implements LineChartOnValueSelectListener {
 
         @Override
-        public void onValueSelected(int i, int i1, PointValue pointValue) {
+        public void onValueSelected(int i, int pointIndex, PointValue pointValue) {
 
         }
 

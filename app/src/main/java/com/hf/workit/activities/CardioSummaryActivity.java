@@ -1,16 +1,20 @@
 package com.hf.workit.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.Pair;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hf.workit.R;
 import com.hf.workit.components.Constatnts;
@@ -63,16 +67,31 @@ public class CardioSummaryActivity extends Activity {
 
     ArrayList<Pair<Long, Float>> chartDotsExecution = new ArrayList<Pair<Long, Float>>();
     ArrayList<Pair<Long, Float>> chartDotsWeight = new ArrayList<Pair<Long, Float>>();
+    private Context mContext;
 
     @Override
     public void onCreate(Bundle bd) {
         super.onCreate(bd);
         setContentView(R.layout.cardio_execution_summary);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+//                NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mContext = this;
         mExerciseID = getIntent().getStringExtra(IExercise.EXERCISE_ID);
         mChart = (LineChartView)findViewById(R.id.exercise_chart);
         getActionBar().setTitle("LOG");
@@ -309,13 +328,20 @@ public class CardioSummaryActivity extends Activity {
         public float duration;
         public float distance;
         public int calories;
+
+        public String getFormatedDate() {
+            return (String) DateFormat.format("dd/MM/yy", date);
+        }
     }
 
     private class ValueTouchListener implements LineChartOnValueSelectListener {
 
         @Override
-        public void onValueSelected(int i, int i1, PointValue pointValue) {
-
+        public void onValueSelected(int i, int pointIndex, PointValue pointValue) {
+            ExerciseExecution clickedExercise = executions.get(pointIndex);
+            Utils.popToast(mContext, "Date: " + clickedExercise.getFormatedDate() + "\nDuration: " +
+                    clickedExercise.duration + " minutes\nDistance: " + clickedExercise.distance
+                    + "\nCalories: " + clickedExercise.calories, Toast.LENGTH_LONG);
         }
 
         @Override

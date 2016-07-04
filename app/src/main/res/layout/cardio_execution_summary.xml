@@ -10,42 +10,51 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:text="Add Workout"
-        android:layout_gravity="center"
 
-        android:onClick="addCardioWorkout"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <RadioGroup
-        android:id="@+id/cardio_radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <RadioButton
+        <RadioGroup
+            android:id="@+id/cardio_radio_group"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:text="Calories"
-            android:id="@+id/calories_radio"
-            android:textColor="#FFFFFFFF"
-            android:onClick="modifyChart"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:text="Duration"
-            android:id="@+id/duration_radio"
-            android:textColor="#FFFFFFFF"
-            android:onClick="modifyChart"
+            android:layout_height="wrap_content">
 
-            android:layout_height="wrap_content" />
-        <RadioButton
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:text="Calories"
+                android:id="@+id/calories_radio"
+                android:textColor="#FFFFFFFF"
+                android:onClick="modifyChart"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:text="Duration"
+                android:id="@+id/duration_radio"
+                android:textColor="#FFFFFFFF"
+                android:onClick="modifyChart"
+
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:text="Distance"
+                android:id="@+id/distance_radio"
+                android:onClick="modifyChart"
+                android:textColor="#FFFFFFFF"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <Button
             android:layout_width="wrap_content"
-            android:text="Distance"
-            android:id="@+id/distance_radio"
-            android:onClick="modifyChart"
-            android:textColor="#FFFFFFFF"
+            android:layout_weight="1"
+            android:text="Add Workout"
+            android:layout_gravity="center_vertical"
+            android:onClick="addCardioWorkout"
             android:layout_height="wrap_content" />
-    </RadioGroup>
+
+    </LinearLayout>
 
     <lecho.lib.hellocharts.view.LineChartView
         android:id="@+id/exercise_chart"

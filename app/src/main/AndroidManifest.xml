@@ -9,10 +9,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo8"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+        <!--android:theme="@android:style/Theme.Holo.Light" >-->
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
+            android:theme="@style/AppThemeNoBack"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,47 +24,100 @@
         </activity>
         <activity
             android:name=".activities.EditPlanDetailsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.EditPlansListActivity" />
+        </activity>
         <activity
             android:name=".activities.EditExerciseActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.EditPlanContentActivity" />
+        </activity>
         <activity
             android:name=".activities.EditPlanContentActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.EditPlanDetailsActivity" />
+        </activity>
         <activity
             android:name=".activities.EditPlansListActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
         <activity
             android:name=".activities.SelectWorkoutActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
         <activity
             android:name=".activities.WorkoutActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.SelectWorkoutActivity" />
+        </activity>
         <activity
             android:name=".activities.ExecuteExercise"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.WorkoutActivity" />
+        </activity>
         <activity
             android:name=".activities.WorkoutLogActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
         <activity
             android:name=".activities.PlanExecutionSummaryActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainLog" />
+        </activity>
         <activity
             android:name=".activities.PlanExercisesSummaryActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.PlanExecutionSummaryActivity" />
+        </activity>
         <activity
             android:name=".activities.ExerciseExecutionSummaryActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.PlanExercisesSummaryActivity" />
+        </activity>
         <activity
             android:name=".activities.MainLog"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
         <activity
             android:name=".activities.CardioSummaryActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainLog" />
+        </activity>
         <activity
             android:name=".activities.AddCardioWorkoutFloat"
             android:theme="@style/AppThemeDialog"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+        </activity>
 
         <service android:name=".components.ClockService" />
 

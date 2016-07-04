@@ -60,24 +60,6 @@ public class MainActivity extends Activity {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                android.R.drawable.ic_delete, android.R.string.paste, android.R.string.copy) {
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-
-        // Set the drawer toggle as the DrawerListener
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     @Override
@@ -154,9 +136,6 @@ public class MainActivity extends Activity {
         mLastBackPress = System.currentTimeMillis();
     }
 
-
-
-
     public class ObjectDrawerItem {
 
         public int icon;
@@ -203,6 +182,5 @@ public class MainActivity extends Activity {
 
             return listItem;
         }
-
     }
 }
