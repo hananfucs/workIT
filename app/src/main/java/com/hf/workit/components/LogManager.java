@@ -1,10 +1,10 @@
 package com.hf.workit.components;
 
-import android.database.Cursor;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by hanan on 06/06/16.
@@ -22,7 +22,7 @@ public class LogManager {
     private static int sWorkoutPercentage;
     private static int sWorkoutLength;
 
-    private static String currentWorkoutID;
+    private static String currentPlanID;
 
 
     public static int getWorkoutPercentage() {
@@ -78,12 +78,12 @@ public class LogManager {
         sIsWorkoutInProgress = value;
     }
 
-    public static void setCurrentWorkoutID(String currentWorkoutID) {
-        LogManager.currentWorkoutID = currentWorkoutID;
+    public static void setCurrentPlanID(String currentPlanID) {
+        LogManager.currentPlanID = currentPlanID;
     }
 
-    public static String getCurrentWorkoutID() {
-        return LogManager.currentWorkoutID;
+    public static String getCurrentPlanID() {
+        return LogManager.currentPlanID;
     }
 
     public static void endCurrentWorkout(){
@@ -96,7 +96,7 @@ public class LogManager {
 
     public static String getCurrentPlanName() {
         String currentWorkoutName = null;
-        String currentWorkoutId = getCurrentWorkoutID();
+        String currentWorkoutId = getCurrentPlanID();
         for (IPlan plan : PlanManager.getPlans()) {
             if (plan.planId().equals(currentWorkoutId))
                 currentWorkoutName = plan.getTitle();
@@ -127,6 +127,9 @@ public class LogManager {
     public static void logWorkout() {
         float totalWorkoutSets = 0;
         float completedWorkoutSets = 0;
+
+        String workoutID = UUID.randomUUID().toString();
+
         for(int i = 0; i < sExerciseExecution.size(); i++) {
             int exerciseKey = sExerciseExecution.keyAt(i);
             float setsDone = PlanManager.getExerciseFromPlan(getCurrentPlanName(), exerciseKey).getSets()
@@ -137,7 +140,7 @@ public class LogManager {
             int percentage = (int)(100*(setsDone/totalSets));
             float weight = Float.parseFloat(PlanManager.getExerciseFromPlan(getCurrentPlanName(), exerciseKey).getWeight());
             float weight2 = Float.parseFloat(PlanManager.getExerciseFromPlan(getCurrentPlanName(), exerciseKey).getWeight2());
-            Utils.getDBHelper().addExercise(currentWorkoutID, String.valueOf(exerciseKey), weight, weight2, percentage);
+            Utils.getDBHelper().addExercise(workoutID, String.valueOf(exerciseKey), weight, weight2, percentage);
         }
 
         long endTIme = System.currentTimeMillis();
@@ -145,7 +148,7 @@ public class LogManager {
         sWorkoutLength = workoutLength;
         int workoutPercentage = (int)((completedWorkoutSets/totalWorkoutSets) * 100);
         sWorkoutPercentage = workoutPercentage;
-        Utils.getDBHelper().addWorkout(currentWorkoutID, getCurrentPlanName(), sStartDate,
+        Utils.getDBHelper().addWorkout(workoutID, currentPlanID, sStartDate,
                 workoutLength, workoutPercentage);
 
     }
@@ -157,7 +160,7 @@ public class LogManager {
         sIsWorkoutInProgress = false;
         sWorkoutPercentage = 0;
         sWorkoutLength = 0;
-        currentWorkoutID = null;
+        currentPlanID = null;
         sExerciseExecutionColors.clear();
     }
 

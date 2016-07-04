@@ -81,6 +81,11 @@ public class CardioSummaryActivity extends Activity {
         title.setText(PlanManager.getCardios().get(mExerciseID));
 
         getAllExecutions();
+        if (executions.size() == 0) {
+            ExerciseExecution ex = new ExerciseExecution();
+            ex.date = System.currentTimeMillis();
+            executions.add(ex);
+        }
         chartStuff(DATA_DURATION);
         RadioGroup rg = (RadioGroup)findViewById(R.id.cardio_radio_group);
         rg.check(findViewById(R.id.duration_radio).getId());
@@ -108,6 +113,7 @@ public class CardioSummaryActivity extends Activity {
             lines = new ArrayList<Line>();
             isNew = true;
         }
+
         long firstWorkout = executions.get(0).date;
         long currentTime = System.currentTimeMillis();
         int numOfDays = (int) ((currentTime - firstWorkout) / Constatnts.DAY_MILLIS);

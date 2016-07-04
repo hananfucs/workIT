@@ -129,7 +129,7 @@ public class CardioLogFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Intent intent = new Intent(getActivity(), CardioSummaryActivity.class);
-        intent.putExtra(IExercise.EXERCISE_ID, mExercisesIds.get((int)id));
+        intent.putExtra(IExercise.EXERCISE_ID, mExercisesIds.get((int)position));
         startActivity(intent);
     }
 }

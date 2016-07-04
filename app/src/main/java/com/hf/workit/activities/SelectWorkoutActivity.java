@@ -69,10 +69,10 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
     private void startWorkoutExecuteActivity(Intent intent, long id) {
         LogManager.startWorkout();
 
-        if (!PlanManager.getPlan(mPlansNames.get((int) id)).planId().equals(LogManager.getCurrentWorkoutID())) {
+        if (!PlanManager.getPlan(mPlansNames.get((int) id)).planId().equals(LogManager.getCurrentPlanID())) {
             LogManager.resetExerciseExecution();
         }
-        LogManager.setCurrentWorkoutID(PlanManager.getPlan(mPlansNames.get((int) id)).planId());
+        LogManager.setCurrentPlanID(PlanManager.getPlan(mPlansNames.get((int) id)).planId());
         startActivity(intent);
     }
 
@@ -80,7 +80,7 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
         if (!LogManager.isWorkoutInProgress())
             return true;
         String workoutId = PlanManager.getPlan(workoutName).planId();
-        if (workoutId.equals(LogManager.getCurrentWorkoutID()))
+        if (workoutId.equals(LogManager.getCurrentPlanID()))
             return true;
 
         String currentWorkoutName = LogManager.getCurrentPlanName();
