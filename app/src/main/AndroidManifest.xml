@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hf.workit" >
+    package="com.hf.workit">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -52,29 +52,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="file" />
-                <data android:host="*" />
-                <data android:pathPattern="/.*\\.wrkt" />
-                <data android:pathPattern=".*\\.wrkt" />
-            </intent-filter>
-
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW"/>-->
-                <!--<category android:name="android.intent.category.DEFAULT"/>-->
-                <!--<category android:name="android.intent.category.BROWSABLE"/>-->
-                <!--<data android:mimeType="text/plain"/>-->
-            <!--</intent-filter>-->
-
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW"/>-->
-                <!--<category android:name="android.intent.category.DEFAULT"/>-->
-                <!--<category android:name="android.intent.category.BROWSABLE"/>-->
-                <!--<data android:mimeType="application/wrkt"/>-->
-            <!--</intent-filter>-->
 
         </activity>
         <activity
@@ -148,6 +125,15 @@
 
         <activity
             android:name=".activities.SettingsActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.AboutActivity"
+            android:theme="@style/AppThemeDialog"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

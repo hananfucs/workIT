@@ -101,7 +101,7 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
 
     private void importPlan() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
-        builder.setTitle("Title");
+//        builder.setTitle("Title");
         final Context context = this;
         // Set up the input
         final EditText input = new EditText(this);

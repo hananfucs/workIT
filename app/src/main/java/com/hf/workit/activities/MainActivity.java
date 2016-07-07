@@ -33,19 +33,20 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private String[] sideMenuTitles = {"Start Workout", "Workout Log", "Edit Plans", "Settings"};
+    private String[] sideMenuTitles = {"Start Workout", "Workout Log", "Edit Plans", "Settings", "About"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[4];
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[5];
 
         drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_fitness_center_white_24dp, sideMenuTitles[0]);
         drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_trending_up_white_24dp, sideMenuTitles[1]);
         drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_assignment_white_24dp, sideMenuTitles[2]);
         drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_settings_white_24dp, sideMenuTitles[3]);
+        drawerItem[4] = new ObjectDrawerItem(R.drawable.ic_info_outline_white_24dp, sideMenuTitles[4]);
 
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.listview_item_row, drawerItem);
 
@@ -62,7 +63,6 @@ public class MainActivity extends Activity {
     public void onResume() {
         super.onResume();
         final int abTitleId = getResources().getIdentifier("action_bar_title", "id", "android");
-//        final int abIconId = getResources().getIdentifier("action_bar_icon", "id", "android");
         View.OnClickListener hambi =  new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +73,6 @@ public class MainActivity extends Activity {
             }
         };
         findViewById(abTitleId).setOnClickListener(hambi);
-//        findViewById(abIconId).setOnClickListener(hambi);
     }
 
     @Override
@@ -122,9 +121,17 @@ public class MainActivity extends Activity {
                 case 3:
                     startSettingsActivity();
                     break;
+                case 4:
+                    startAboutActivity();
+                    break;
             }
             mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
+    }
+
+    private void startAboutActivity() {
+        Intent it = new Intent(this, AboutActivity.class);
+        startActivity(it);
     }
 
 
