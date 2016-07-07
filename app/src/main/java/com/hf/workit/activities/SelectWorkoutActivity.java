@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.hf.workit.R;
+import com.hf.workit.components.Constatnts;
 import com.hf.workit.components.IPlan;
 import com.hf.workit.components.LogManager;
 import com.hf.workit.components.PlanManager;
@@ -30,6 +31,7 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
     List<IPlan> mPlans = new ArrayList<IPlan>();
 
     ArrayList<String> mPlansNames = new ArrayList<String>();
+    ArrayList<String> mPlansDisplayNames = new ArrayList<String>();
     ListView lv;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
         super.onResume();
         mPlans = PlanManager.getPlans();
 
-        adapter = new ArrayAdapter<String>(this, R.layout.listview_reg, mPlansNames);
+        adapter = new ArrayAdapter<String>(this, R.layout.listview_reg, mPlansDisplayNames);
         setListAdapter(adapter);
 
         refreshPlans();
@@ -65,7 +67,14 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
 
     private void refreshPlans() {
         mPlansNames.clear();
+        mPlansDisplayNames.clear();
         for(IPlan pl:mPlans){
+            if (pl.getExpirationTime() - System.currentTimeMillis() < 0)
+                mPlansDisplayNames.add(pl.getTitle() + " - Expired!");
+            else if (pl.getExpirationTime() - System.currentTimeMillis() < Constatnts.DAY_MILLIS * 10)
+                mPlansDisplayNames.add(pl.getTitle() + " - Expires in " + (pl.getExpirationTime() - System.currentTimeMillis())/Constatnts.DAY_MILLIS + " days!");
+            else
+                mPlansDisplayNames.add(pl.getTitle());
             mPlansNames.add(pl.getTitle());
         }
         adapter.notifyDataSetChanged();

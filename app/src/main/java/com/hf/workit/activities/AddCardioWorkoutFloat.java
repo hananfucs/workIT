@@ -56,11 +56,11 @@ public class AddCardioWorkoutFloat extends Activity {
 
     private void findViews() {
         mTimeText = (EditText)findViewById(R.id.new_cardio_time);
-        mTimeText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
+//        mTimeText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
         mDistanceText = (EditText)findViewById(R.id.new_cardio_distance);
-        mDistanceText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
+//        mDistanceText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
         mCaloriesText = (EditText)findViewById(R.id.new_cardio_calories);
-        mCaloriesText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
+//        mCaloriesText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
         mDateButton = (Button)findViewById(R.id.new_cardio_date);
 
 

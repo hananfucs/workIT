@@ -21,6 +21,7 @@
       <EditText
           android:id="@+id/new_cardio_time"
           android:layout_weight="1"
+          android:inputType="numberDecimal"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content" />
     </LinearLayout>
@@ -43,6 +44,7 @@
         <EditText
             android:id="@+id/new_cardio_distance"
             android:layout_width="fill_parent"
+            android:inputType="numberDecimal"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -65,6 +67,7 @@
         <EditText
             android:id="@+id/new_cardio_calories"
             android:layout_width="fill_parent"
+            android:inputType="numberDecimal"
                 android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
