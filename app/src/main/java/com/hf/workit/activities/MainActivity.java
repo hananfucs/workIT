@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private String[] sideMenuTitles = {"Start Workout", "Workout Log", "Edit Plans"};
+    private String[] sideMenuTitles = {"Start Workout", "Workout Log", "Edit Plans", "Settings"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +45,14 @@ public class MainActivity extends Activity {
         drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_fitness_center_white_24dp, sideMenuTitles[0]);
         drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_trending_up_white_24dp, sideMenuTitles[1]);
         drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_assignment_white_24dp, sideMenuTitles[2]);
-        drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_assignment_white_24dp, "Help");
+        drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_settings_white_24dp, sideMenuTitles[3]);
 
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.listview_item_row, drawerItem);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        // Set the adapter for the list view
-//        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1, sideMenuTitles));
         mDrawerList.setAdapter(adapter);
-        // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -66,8 +62,8 @@ public class MainActivity extends Activity {
     public void onResume() {
         super.onResume();
         final int abTitleId = getResources().getIdentifier("action_bar_title", "id", "android");
-        findViewById(abTitleId).setOnClickListener(new View.OnClickListener() {
-
+//        final int abIconId = getResources().getIdentifier("action_bar_icon", "id", "android");
+        View.OnClickListener hambi =  new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT))
@@ -75,7 +71,9 @@ public class MainActivity extends Activity {
                 else
                     mDrawerLayout.closeDrawer(Gravity.LEFT);
             }
-        });
+        };
+        findViewById(abTitleId).setOnClickListener(hambi);
+//        findViewById(abIconId).setOnClickListener(hambi);
     }
 
     @Override
@@ -102,6 +100,11 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void startSettingsActivity() {
+        Intent intent = new Intent(this, SettingsPActivity.class);
+        startActivity(intent);
+    }
+
     private class DrawerItemClickListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -115,6 +118,9 @@ public class MainActivity extends Activity {
                     break;
                 case 2:
                     startEditPlanActivity();
+                    break;
+                case 3:
+                    startSettingsActivity();
                     break;
             }
             mDrawerLayout.closeDrawer(Gravity.LEFT);

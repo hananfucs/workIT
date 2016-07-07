@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference android:title="Whistle"
+        android:defaultValue="true"
+        android:textColor="#FFFFFF"
+        android:summary="Sound a whistle when time runs out."
+        android:key="whistle" />
+
+    <CheckBoxPreference android:title="Vibrate"
+        android:defaultValue="true"
+        android:textColor="#FFFFFF"
+        android:summary="Vibrate when time runs out"
+        android:key="vibrate" />
+
+    <CheckBoxPreference android:title="Pre-Countdown"
+        android:defaultValue="false"
+        android:textColor="#FFFFFF"
+        android:summary="Allow a countdown before starting an exercise"
+        android:key="preCountdown" />
+
+    <com.hf.workit.activities.NumberPickerPreference
+        android:key="key_number"
+        android:title="Pre-Countdown Length"
+        android:dialogTitle=""
+        android:defaultValue="3" />
+
+</PreferenceScreen>

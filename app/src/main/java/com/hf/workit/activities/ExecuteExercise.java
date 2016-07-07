@@ -9,12 +9,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
@@ -72,6 +74,10 @@ public class ExecuteExercise extends Activity {
     private boolean isRepeats = true;
     private boolean isRepeats2 = true;
 
+    private boolean mWhistle = true;
+    private boolean mVibrate = true;
+    private int mPreCountdown = 0;
+
     private boolean isDouble = false;
 
     private int setsCounter;
@@ -116,6 +122,18 @@ public class ExecuteExercise extends Activity {
         mContext = this;
         getActionBar().setTitle(mCurrentExercise.getTitle().toUpperCase());
         registerClockReceiver();
+        getAlarmSettings();
+    }
+
+    private void getAlarmSettings() {
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        mWhistle = SP.getBoolean("whistle", false);
+        mVibrate = SP.getBoolean("vibrate", false);
+        if (SP.getBoolean("preCountdown", false)) {
+//            int a = Integer.parseInt(SP.getString("key_number", "0"));
+            int a = SP.getInt("key_number", 0);
+            mPreCountdown = a;//= SP.getInt("preCountdownAmount", 0);
+        }
     }
 
     private void registerClockReceiver() {
@@ -280,6 +298,8 @@ public class ExecuteExercise extends Activity {
         intent.putExtra("title", exercise);
         intent.putExtra(IPlan.PLAN_NAME, mCurrentPlan);
         intent.putExtra(IExercise.EXERCISE_ID, currentExerciseID);
+        if (phase != PHASE_BREAK)
+            intent.putExtra("pre_countdown", mPreCountdown);
         stopService(new Intent(this, ClockService.class));
         startService(intent);
     }
@@ -379,17 +399,19 @@ public class ExecuteExercise extends Activity {
     }
 
     private void notifyUser(boolean vibrate) {
-        MediaPlayer p = new MediaPlayer();
-        try {
-            AssetFileDescriptor afd = getApplicationContext().getAssets().openFd("whistle.mp3");
-            p.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            afd.close();
-            p.prepare();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (mWhistle) {
+            MediaPlayer p = new MediaPlayer();
+            try {
+                AssetFileDescriptor afd = getApplicationContext().getAssets().openFd("whistle.mp3");
+                p.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                afd.close();
+                p.prepare();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            p.start();
         }
-        p.start();
-        if (vibrate) {
+        if (vibrate && mVibrate) {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(200);
         }
@@ -401,14 +423,19 @@ public class ExecuteExercise extends Activity {
         public void onReceive(Context context, Intent intent) {
             float time = intent.getFloatExtra("time_value", 0);
             int target = intent.getIntExtra("target", 3);
+            int color = intent.getIntExtra("change_color", 0);
             if (time == 0)
                 notifyUser(true);
 
             switch (target) {
                 case PHASE_EX_1:
+                    if (color != 0)
+                        mClockText.setTextColor(color);
                     mClockText.setText(String.valueOf(String.format("%.1f", time)));
                     break;
                 case PHASE_EX_2:
+                    if (color != 0)
+                        mClockText2.setTextColor(color);
                     mClockText2.setText(String.valueOf(String.format("%.1f", time)));
                     break;
                 case PHASE_BREAK:

@@ -51,6 +51,7 @@ public class PlanManager {
     public static IPlan getPlan (String name) {
         return sPlans.get(name);
     }
+
     public static void addPlan(String name, IPlan plan) {
         sPlans.put(name, plan);
     }
@@ -160,7 +161,7 @@ public class PlanManager {
         return mainArray;
     }
 
-    private static JSONObject getPlanJson(String plan) throws JSONException {
+    public static JSONObject getPlanJson(String plan) throws JSONException {
         JSONObject planJson;
         planJson = getPlan(plan).getJson();
         planJson.put(Constatnts.PlanJson.EXERCISES, getExerciseListJsonArray(plan));
@@ -198,7 +199,7 @@ public class PlanManager {
         }
     }
 
-    private static IPlan createPlanFromJson(JSONObject planJson) throws JSONException {
+    public static IPlan createPlanFromJson(JSONObject planJson) throws JSONException {
         String planType = planJson.getString(Constatnts.PlanJson.TYPE);
         IPlan retPlan = null;
         if (planType.equals("ab")) {

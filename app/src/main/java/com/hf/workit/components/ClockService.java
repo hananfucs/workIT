@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.IBinder;
 
 import com.hf.workit.R;
@@ -24,6 +25,7 @@ public class ClockService extends Service {
     private static final int notificationID = 232;
     private String mPlanName;
     private int mExercise;
+    private float mPreCountDown = 0;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -48,7 +50,7 @@ public class ClockService extends Service {
         mExercise = intent.getIntExtra(IExercise.EXERCISE_ID, 0);
         mCurrentPhase = target;
         mTitle = intent.getStringExtra("title");
-
+        mPreCountDown = intent.getIntExtra("pre_countdown", 0);
         startTimerThread(length, target);
 
         return START_STICKY;
@@ -58,6 +60,29 @@ public class ClockService extends Service {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                if (mPreCountDown != 0) {
+                    while (mPreCountDown > 0) {
+                        Intent intent = new Intent("timer_update");
+                        intent.putExtra("time_value", mPreCountDown);
+                        intent.putExtra("target", target);
+                        intent.putExtra("change_color", Color.YELLOW);
+                        sendBroadcast(intent);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        mPreCountDown--;
+                    }
+                    Intent intent = new Intent("timer_update");
+                    intent.putExtra("time_value", 0);
+                    intent.putExtra("target", target);
+                    intent.putExtra("change_color", Color.RED);
+                    sendBroadcast(intent);
+                }
+
+
+
                 float i = time;
                 while (i > 0) {
                     if (!threadRun)

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.NavUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -20,6 +22,7 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hf.workit.R;
@@ -31,6 +34,7 @@ import com.hf.workit.components.PlanManager;
 import com.hf.workit.components.SinglePlan;
 import com.hf.workit.components.Utils;
 
+import org.apache.http.client.UserTokenHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,6 +47,8 @@ import java.util.Date;
  * Created by hanan on 10/09/15.
  */
 public class EditPlanDetailsActivity extends Activity {
+    private Context mContext;
+
     private boolean isSingle = true;
     private String planName;
     private String coachName;
@@ -62,6 +68,7 @@ public class EditPlanDetailsActivity extends Activity {
     private Button mEndDateButton;
 
     private boolean isNew = true;
+    private TextView mSharePlanText;
 
     private JSONObject planJson = new JSONObject();
 
@@ -76,6 +83,7 @@ public class EditPlanDetailsActivity extends Activity {
         setLayout();
         getActionBar().setTitle("Details");
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        mContext = this;
     }
 
     @Override
@@ -95,6 +103,7 @@ public class EditPlanDetailsActivity extends Activity {
         clubNameText = (AutoCompleteTextView)findViewById(R.id.club_name);
         timesPerWeekPicker = (NumberPicker)findViewById(R.id.daysPicker);
         mEndDateButton = (Button)findViewById(R.id.expiration_button);
+        mSharePlanText = (TextView)findViewById(R.id.share_plan);
 
         timesPerWeekPicker.setMaxValue(7);
         timesPerWeekPicker.setMinValue(1);
@@ -262,4 +271,32 @@ public class EditPlanDetailsActivity extends Activity {
         String date = (String) DateFormat.format("dd/MM/yyyy", textEndDate);
         mEndDateButton.setText(date);
     }
+
+    public void sharePlan(View v) {
+        savePlan(isNew);
+        JSONObject planJsonLocal = null;
+        try {
+            planJsonLocal = PlanManager.getPlanJson(planName);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return;
+        }
+        mSharePlanText.setText("Please Wait...");
+        Utils.uploadPlan(planJsonLocal, mShareCodeHandler, this);
+
+    }
+
+    private Handler mShareCodeHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            if (msg.what == Utils.ERR_NO_INTERNET) {
+                Utils.popToast(mContext, "No Internet Connection", Toast.LENGTH_SHORT);
+                mSharePlanText.setText("Share");
+                return;
+            }
+
+
+            String code = (String) msg.obj;
+            mSharePlanText.setText("Share Code: " + code);
+        }
+    };
 }

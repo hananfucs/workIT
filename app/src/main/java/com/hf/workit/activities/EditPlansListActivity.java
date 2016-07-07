@@ -1,20 +1,31 @@
 package com.hf.workit.activities;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.NavUtils;
+import android.text.InputType;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hf.workit.R;
 import com.hf.workit.components.IPlan;
 import com.hf.workit.components.PlanManager;
+import com.hf.workit.components.Utils;
+
+import org.apache.http.client.UserTokenHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +38,13 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
     ArrayList<String> mPlansNames = new ArrayList<String>();
     ListView lv;
 
+    private Context mContext;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plans_edit);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        mContext = this;
     }
 
     @Override
@@ -68,6 +82,52 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
 
 
     public void createPlan(View v){
+        new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
+                .setCustomTitle(Utils.createTitleView(this, "Create New Plan"))
+                .setMessage("Create a new plan or insert share code?")
+                .setPositiveButton("Create New", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        createNewPlan();
+                    }
+                })
+                .setNegativeButton("Insert Share Code", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        importPlan();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    private void importPlan() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+        builder.setTitle("Title");
+        final Context context = this;
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String code = input.getText().toString();
+                Utils.getSharedPlan(code, refreshHandler, context);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    private void createNewPlan() {
         Intent i = new Intent(this, EditPlanDetailsActivity.class);
         startActivityForResult(i, 1);
     }
@@ -85,4 +145,16 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
         PlanManager.saveDataToDisk();
         finish();
     }
+
+    private Handler refreshHandler = new Handler() {
+        @Override
+    public void handleMessage(Message msg) {
+            if (msg.what == Utils.ERR_NO_INTERNET)
+                Utils.popToast(mContext, "No Internet Connection", Toast.LENGTH_LONG);
+            else if (msg.what == Utils.ERR_ELSE)
+                Utils.popToast(mContext, "OOPS! Something went wrong", Toast.LENGTH_LONG);
+            else
+                onResume();
+        }
+    };
 }
