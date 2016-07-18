@@ -62,6 +62,8 @@ public class ClockService extends Service {
             public void run() {
                 if (mPreCountDown != 0) {
                     while (mPreCountDown > 0) {
+                        if (!threadRun)
+                            return;
                         Intent intent = new Intent("timer_update");
                         intent.putExtra("time_value", mPreCountDown);
                         intent.putExtra("target", target);
@@ -74,6 +76,8 @@ public class ClockService extends Service {
                         }
                         mPreCountDown--;
                     }
+                    if (!threadRun)
+                        return;
                     Intent intent = new Intent("timer_update");
                     intent.putExtra("time_value", 0);
                     intent.putExtra("target", target);
@@ -130,6 +134,7 @@ public class ClockService extends Service {
         notificationIntent.putExtra(IPlan.PLAN_NAME, mPlanName);
         notificationIntent.putExtra(IExercise.EXERCISE_ID, mExercise);
         notificationIntent.putExtra("last_phase", mCurrentPhase);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent contentIntent = PendingIntent.getActivity(this,
                 0, notificationIntent,
                 PendingIntent.FLAG_CANCEL_CURRENT);

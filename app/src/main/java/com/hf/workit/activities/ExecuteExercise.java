@@ -115,6 +115,9 @@ public class ExecuteExercise extends Activity {
         mCurrentExercise = PlanManager.getExerciseFromPlan(mCurrentPlan, currentExerciseID);
         mCurrentExerciseJson = mCurrentExercise.toJson();
         mCurrentPhase = getIntent().getIntExtra("last_phase", 0);
+        if (mCurrentPhase == 0) {
+            mCurrentPhase = LogManager.getCurrentExercisePhase();
+        }
         getUIComponents();
         try {
             fillTexts();
@@ -122,6 +125,7 @@ public class ExecuteExercise extends Activity {
         mContext = this;
         getActionBar().setTitle(mCurrentExercise.getTitle().toUpperCase());
         registerClockReceiver();
+        updateUiState(false);
         getAlarmSettings();
     }
 
@@ -203,57 +207,62 @@ public class ExecuteExercise extends Activity {
 
     public void buttonAction(View v) {
         if (mCurrentPhase == PHASE_BREAK || mCurrentPhase == PHASE_NONE) {
-            start(null);
+            start();
         } else if (mCurrentPhase == PHASE_EX_2) {
-            done(null);
+            done();
         } else if (mCurrentPhase == PHASE_EX_1) {
             if (isDouble)
-                start(null);
+                start();
             else {
-                done(null);
+                done();
             }
         }
     }
 
 
-    public void start(View v) {
+    public void start() {
+        stopService(new Intent(this, ClockService.class));
         mBreakClockText.setTextColor(0xFF00FF7F);
         mBreakClockText.setTypeface(null, Typeface.NORMAL);
         if (mCurrentPhase == PHASE_NONE) {
             mCurrentPhase = PHASE_EX_1;
+            LogManager.setCurrentExercisePhase(PHASE_EX_1);
             if (isDouble)
-                mStartButton.setText("START");
+                mStartButton.setText("START Exercise 2");
             else
                 mStartButton.setText("DONE");
         }
         else if (mCurrentPhase == PHASE_EX_1) {
             mCurrentPhase = PHASE_EX_2;
+            LogManager.setCurrentExercisePhase(PHASE_EX_2);
             mStartButton.setText("DONE");
         } else if (mCurrentPhase == PHASE_BREAK) {
             mCurrentPhase = PHASE_EX_1;
+            LogManager.setCurrentExercisePhase(PHASE_EX_1);
             if (isDouble)
-                mStartButton.setText("START");
+                mStartButton.setText("START Exercise 2");
             else
                 mStartButton.setText("DONE");
         } else if (mCurrentPhase == PHASE_EX_2)
             return;
-        updateUiState();
+        updateUiState(true);
     }
 
-    private void updateUiState() {
+    private void updateUiState(boolean setClockService) {
         switch (mCurrentPhase) {
             case PHASE_NONE:
                 mClockText.setVisibility(View.INVISIBLE);
-                mClockText2.setVisibility(View.INVISIBLE);
+                if (mClockText2 != null)
+                    mClockText2.setVisibility(View.INVISIBLE);
                 mBreakClockText.setVisibility(View.INVISIBLE);
                 break;
             case PHASE_EX_1:
             case PHASE_EX_2:
-                setClockTextAndNotification();
+                setClockTextAndNotification(setClockService);
         }
     }
 
-    private void setClockTextAndNotification() {
+    private void setClockTextAndNotification(boolean setClockService) {
         boolean isRepeatsLocal;
         mBreakClockText.setVisibility(View.INVISIBLE);
         if (mCurrentPhase == PHASE_EX_1) {
@@ -279,11 +288,13 @@ public class ExecuteExercise extends Activity {
         } else {
             if (mCurrentPhase == PHASE_EX_1) {
                 int drillTime = mAmount;
-                startClockService(drillTime, PHASE_EX_1, (String) mExerciseNameText.getText());
+                if (setClockService)
+                    startClockService(drillTime, PHASE_EX_1, (String) mExerciseNameText.getText());
             }
             else if (mCurrentPhase == PHASE_EX_2) {
                 int drillTime = mAmount2;
-                startClockService(drillTime, PHASE_EX_2, (String) mExerciseNameText2.getText());
+                if (setClockService)
+                    startClockService(drillTime, PHASE_EX_2, (String) mExerciseNameText2.getText());
             }
         }
 
@@ -318,12 +329,14 @@ public class ExecuteExercise extends Activity {
     }
 
 
-    public void done(View v) {
-        mStartButton.setText("START");
+    public void done() {
+        mStartButton.setText("START Exercise 1");
         if (isDouble && mCurrentPhase == PHASE_EX_2) {
             mCurrentPhase = PHASE_BREAK;
+            LogManager.setCurrentExercisePhase(PHASE_BREAK);
         } else if (!isDouble && mCurrentPhase == PHASE_EX_1) {
             mCurrentPhase = PHASE_BREAK;
+            LogManager.setCurrentExercisePhase(PHASE_BREAK);
         } else {
             return;
         }
@@ -388,6 +401,7 @@ public class ExecuteExercise extends Activity {
         NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         nm.cancel(232);
         stopService(new Intent(this, ClockService.class));
+        LogManager.setCurrentExercisePhase(PHASE_NONE);
         finish();
     }
 
@@ -396,6 +410,7 @@ public class ExecuteExercise extends Activity {
         super.onPause();
         NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         nm.cancel(232);
+        LogManager.setExerciseExecution(mCurrentExercise.getId(), setsCounter);
     }
 
     private void notifyUser(boolean vibrate) {

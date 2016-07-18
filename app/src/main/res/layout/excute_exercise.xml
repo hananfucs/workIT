@@ -22,7 +22,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="START"
+            android:text="START Exercise 1"
             android:onClick="buttonAction"
             android:id="@+id/button_start"
             android:layout_weight="1"/>

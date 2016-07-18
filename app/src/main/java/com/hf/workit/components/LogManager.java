@@ -24,6 +24,8 @@ public class LogManager {
 
     private static String currentPlanID;
 
+    private static int currentExercisePhase = 0;
+
 
     public static int getWorkoutPercentage() {
         return sWorkoutPercentage;
@@ -166,5 +168,13 @@ public class LogManager {
 
     public static ArrayList<Integer> getExerciseStateList() {
         return sExerciseExecutionColors;
+    }
+
+    public static int getCurrentExercisePhase() {
+        return currentExercisePhase;
+    }
+
+    public static void setCurrentExercisePhase(int currentExercisePhase) {
+        LogManager.currentExercisePhase = currentExercisePhase;
     }
 }
