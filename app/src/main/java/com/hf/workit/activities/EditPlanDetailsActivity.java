@@ -42,6 +42,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by hanan on 10/09/15.
@@ -189,7 +190,10 @@ public class EditPlanDetailsActivity extends Activity {
         PlanManager.addToAcClub(clubName);
 
         if(isSingle){
-            newPlan = new SinglePlan(currPlan.planId(),planName,coachName,clubName,timesPerWeek,PlanManager.getExecisesForPlan(planName),fileName, isNew, System.currentTimeMillis(), mExpirationDate);
+            if (!isNew)
+                newPlan = new SinglePlan(currPlan.planId(),planName,coachName,clubName,timesPerWeek,PlanManager.getExecisesForPlan(planName),fileName, isNew, System.currentTimeMillis(), mExpirationDate);
+            else
+                newPlan = new SinglePlan(UUID.randomUUID().toString(),planName,coachName,clubName,timesPerWeek,PlanManager.getExecisesForPlan(planName),fileName, isNew, System.currentTimeMillis(), mExpirationDate);
         } else {
             newPlan = new ABPlan(planName,coachName,clubName,timesPerWeek,PlanManager.getExecisesForPlan(planName), fileName, isNew, System.currentTimeMillis());
         }
