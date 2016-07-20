@@ -460,4 +460,10 @@ public class ExecuteExercise extends Activity {
         }
     }
 
+    public void photoGallery(View V) {
+        Intent intent = new Intent(this, ExerciseGallery.class);
+        intent.putExtra("exercise_photos", mCurrentExercise.getPhotos());
+        startActivity(intent);
+    }
+
 }

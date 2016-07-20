@@ -1,6 +1,7 @@
 package com.hf.workit.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
@@ -58,6 +59,8 @@ public class EditExerciseActivity extends Activity {
     private String currentPlan;
     private int currentId;
 
+    private ArrayList<String> exercisePhotos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,8 @@ public class EditExerciseActivity extends Activity {
             for(IExercise exercise : exercises) {
                 if (exercise.getId() == id) {
                     initFields(exercise);
+                    if (exercisePhotos == null)
+                        exercisePhotos = exercise.getPhotos();
                     break;
                 }
             }
@@ -271,11 +276,11 @@ public class EditExerciseActivity extends Activity {
 
         if (isSingle){
             ret = new SingleExercise((muscleGroup + ex1name).hashCode(), muscleGroup, numOfSets1,
-                    ex1name, isMachine1, device1, weight1text, isRepeats1, repeats1text, breakTime);
+                    ex1name, isMachine1, device1, weight1text, isRepeats1, repeats1text, breakTime, exercisePhotos);
         } else {
             ret = new DoubleExercise((muscleGroup + ex1name).hashCode(), muscleGroup, numOfSets1,
                     ex1name, isMachine1, device1, weight1text, isRepeats1, repeats1text, ex2name, isMachine2,
-                    device2, weight2text, isRepeats2, repeats2text, breakTime);
+                    device2, weight2text, isRepeats2, repeats2text, breakTime, exercisePhotos);
             PlanManager.addToAcDescription(device2);
             PlanManager.addToAcExName(ex2name);
         }
@@ -302,5 +307,18 @@ public class EditExerciseActivity extends Activity {
     public void onBackPressed() {
         saveAndReturn(null);
         finish();
+    }
+
+    public void openGallery(View v) {
+        Intent intent = new Intent(this, ExerciseGallery.class);
+        intent.putExtra("exercise_photos", exercisePhotos);
+
+        startActivityForResult(intent, 1);
+    }
+
+    protected void onActivityResult (int requestCode, int resultCode, Intent imageReturnedIntent) {
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            exercisePhotos = (ArrayList<String>) imageReturnedIntent.getSerializableExtra("new_photos_list");
+        }
     }
 }

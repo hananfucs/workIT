@@ -141,7 +141,24 @@
         </activity>
 
         <activity
+            android:name=".activities.DisplayImageActivity"
+            android:theme="@style/AppThemeDialog"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+
+        <activity
             android:name=".activities.SettingsPActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.ExerciseGallery"
             android:theme="@style/PreferencesTheme"
             android:screenOrientation="portrait">
             <meta-data

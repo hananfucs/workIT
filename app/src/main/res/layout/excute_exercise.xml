@@ -1,7 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
@@ -277,5 +281,13 @@
 
 
     </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="photoGallery"
+        android:src="@drawable/ic_photo_library_white_48dp"/>
 
-</LinearLayout>
+</RelativeLayout>

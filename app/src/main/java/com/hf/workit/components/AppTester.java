@@ -40,11 +40,11 @@ public class AppTester {
         ArrayList<IExercise> ret = new ArrayList<IExercise>();
         String muscleA = "forearms";
         String exNameA = "up-lifting";
-        SingleExercise exerciseA = new SingleExercise((muscleA + exNameA).hashCode(), muscleA, 3, exNameA, false,"hello my name is hanan and i'm from israel I really like to eat tomatoes", "40", true, "12", "60");
+        SingleExercise exerciseA = new SingleExercise((muscleA + exNameA).hashCode(), muscleA, 3, exNameA, false,"hello my name is hanan and i'm from israel I really like to eat tomatoes", "40", true, "12", "60", new ArrayList<String>());
 
         String muscleB = "forearms";
         String exNameB = "up-lifting2";
-        DoubleExercise exerciseB = new DoubleExercise((muscleB + exNameB).hashCode(), muscleB, 3, exNameB, false,"machine 43", "40", false, "12", "arm work", false, "do some shit", "45", true, "12", "12");
+        DoubleExercise exerciseB = new DoubleExercise((muscleB + exNameB).hashCode(), muscleB, 3, exNameB, false,"machine 43", "40", false, "12", "arm work", false, "do some shit", "45", true, "12", "12", new ArrayList<String>());
 
         ret.add(exerciseA);
         ret.add(exerciseB);

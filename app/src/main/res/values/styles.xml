@@ -100,6 +100,14 @@
         <item name="android:dialogTheme">@style/AlertDialogCustom</item>
     </style>
 
+    <style name="MyProgressBar" parent="@android:style/Widget.ProgressBar">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:visibility">gone</item>
+        <!--<item name="android:background">@color/transparency_pleca</item>-->
+        <!--<item name="android:indeterminateDrawable">@drawable/circular_progress_dialog</item>-->
+    </style>
+
     <!--<string name="MyPreference" parent="@android:style/Widget"-->
 
 

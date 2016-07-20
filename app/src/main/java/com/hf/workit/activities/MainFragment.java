@@ -73,19 +73,24 @@ public class MainFragment extends Fragment {
 
 
     private void writeLastWorkout() {
-        String name;
-        long date;
-        int completed;
+        String name = null;
+        long date = 0;
+        int completed = 0;
         try {
             JSONObject lastWorkout = Utils.getDBHelper().getLastWorkout();
-            name = PlanManager.getPlanById(lastWorkout.getString("name")).getTitle();
-            date = lastWorkout.getLong("date");
-            completed = lastWorkout.getInt("completed");
+            if (lastWorkout != null) {
+                name = PlanManager.getPlanById(lastWorkout.getString("name")).getTitle();
+                date = lastWorkout.getLong("date");
+                completed = lastWorkout.getInt("completed");
+            }
         } catch (JSONException e) {
             return;
         }
-        String dateS = (String) DateFormat.format("dd/MM/yyyy", date);
-        mLastWorkoutText.setText(dateS + "\n" + name + "\n" + "Completed: " + completed + "%");
+        if (name != null) {
+            String dateS = (String) DateFormat.format("dd/MM/yyyy", date);
+            mLastWorkoutText.setText(dateS + "\n" + name + "\n" + "Completed: " + completed + "%");
+        } else
+            mLastWorkoutText.setText("No Workouts recorded!");
     }
 
     private void createHintThread() {

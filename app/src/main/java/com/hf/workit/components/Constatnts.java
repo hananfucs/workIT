@@ -1,10 +1,14 @@
 package com.hf.workit.components;
 
+import android.os.Environment;
+
+import java.io.File;
+
 /**
  * Created by hanan on 31/03/16.
  */
 public class Constatnts {
-
+    public static final String PICTURES_DIR = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + "workit/";
     public static final String PLANS_FILE_NAME = "data.dat";
     public static final String AC_FILE_NAME = "ac.dat";
     public static final String CARDIO_FILE_NAME = "cardio.dat";
@@ -25,6 +29,7 @@ public class Constatnts {
         public static final String MUSCLE = "muscle";
         public static final String NUM_OF_SETS = "num_of_sets";
         public static final String BREAK = "break";
+        public static final String PHOTOS = "photos";
 
         public static final String NAME = "name";
         public static final String METHOD = "method";

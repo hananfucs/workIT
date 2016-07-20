@@ -1,7 +1,10 @@
 package com.hf.workit.components;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by hanan on 12/09/15.
@@ -26,11 +29,12 @@ public class DoubleExercise implements IExercise {
     private boolean mIsRepeats2;
 
     private int mId;
+    private ArrayList<String> photos;
 
 
     public DoubleExercise(int id, String mMuscle, int numOfSets, String name1, boolean isMachine1,
                           String machineNum1, String weight1,  boolean isRepeats1, String repeats1, String name2, boolean isMachine2
-                          , String machineNum2, String weight2,  boolean isRepeats2, String repeats2, String breakT) {
+                          , String machineNum2, String weight2,  boolean isRepeats2, String repeats2, String breakT, ArrayList<String> photos) {
         this.mId = id;
         this.mMuscle = mMuscle;
         this.numOfSets = numOfSets;
@@ -48,6 +52,7 @@ public class DoubleExercise implements IExercise {
         this.repeats2 = repeats2;
         this.mIsRepeats2 = isRepeats2;
         this.breakTime = breakT;
+        this.photos = photos;
     }
 
     @Override
@@ -96,6 +101,7 @@ public class DoubleExercise implements IExercise {
             exerciseJson.put(Constatnts.ExerciseJson.REPEATS2, repeats2);
 
             exerciseJson.put(Constatnts.ExerciseJson.BREAK, breakTime);
+            exerciseJson.put(Constatnts.ExerciseJson.PHOTOS, new JSONArray(photos));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -110,6 +116,11 @@ public class DoubleExercise implements IExercise {
     @Override
     public String getWeight2() {
         return weight2;
+    }
+
+    @Override
+    public ArrayList<String> getPhotos() {
+        return photos;
     }
 
     public static DoubleExercise fromJson(JSONObject exerciseJson) throws JSONException {
@@ -130,8 +141,20 @@ public class DoubleExercise implements IExercise {
                 exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS2),
                 exerciseJson.getString(Constatnts.ExerciseJson.REPEATS2),
 
-                exerciseJson.getString(Constatnts.ExerciseJson.BREAK)
+                exerciseJson.getString(Constatnts.ExerciseJson.BREAK),
+                getPhotosFromJson(exerciseJson.getJSONArray(Constatnts.ExerciseJson.PHOTOS))
         );
         return ret;
+    }
+
+
+    private static ArrayList<String> getPhotosFromJson(JSONArray jsonArray) throws JSONException {
+        ArrayList<String> listdata = new ArrayList<String>();
+        if (jsonArray != null) {
+            for (int i=0;i<jsonArray.length();i++){
+                listdata.add(jsonArray.get(i).toString());
+            }
+        }
+        return listdata;
     }
 }
