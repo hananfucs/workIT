@@ -33,7 +33,7 @@
     <Button
         android:layout_width="wrap_content"
         android:textSize="30dp"
-        android:text="Exercises"
+        android:text="@string/exercises"
         android:onClick="openPlanExerciseSummary"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

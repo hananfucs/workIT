@@ -6,7 +6,7 @@
             android:id="@+id/calendarID"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Plan Expiration Date"
+            android:contentDescription="@string/plan_expiration"
             android:maxDate="12/31/2030"
             android:minDate="01/01/2016"
             android:showWeekNumber="false"

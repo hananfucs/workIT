@@ -32,7 +32,7 @@ public class SettingsPActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
-        getActionBar().setTitle("Settings");
+        getActionBar().setTitle(getResources().getString(R.string.settings));
         getActionBar().setDisplayHomeAsUpEnabled(true);
         SharedPreferences.OnSharedPreferenceChangeListener spChanged = new
                 SharedPreferences.OnSharedPreferenceChangeListener() {

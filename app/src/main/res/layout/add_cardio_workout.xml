@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/cardio_time_text_view"
         android:layout_width="wrap_content"
-        android:text="Time:"
+        android:text="@string/time"
         android:layout_weight="1"
         android:singleLine="true"
         android:layout_height="wrap_content" />
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/cardio_distance_text_view"
-            android:text="Distance:"
+            android:text="@string/distance"
             android:singleLine="true"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -58,7 +58,7 @@
             android:layout_weight="1"
             android:id="@+id/cardio_calories_text_view"
             android:singleLine="true"
-            android:text="Calories:"
+            android:text="@string/calories"
             android:layout_height="wrap_content" />
         <Space
             android:layout_width="5dp"
@@ -79,7 +79,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:text="Date:"
+            android:text="@string/date"
             android:singleLine="true"
             android:layout_height="wrap_content" />
         <Space
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:onClick="openCalanderC"
-            android:text="TODAY"
+            android:text="@string/today"
             android:textSize="15dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -105,7 +105,7 @@
         <Button
             android:id="@+id/add_cardio_button"
             android:layout_width="wrap_content"
-            android:text="Add"
+            android:text="@string/add"
             android:onClick="addCardioWorkoutToLog"
             android:textSize="15dp"
             android:layout_height="wrap_content" />
@@ -113,7 +113,7 @@
         <Button
             android:id="@+id/cancel_cardio_button"
             android:layout_width="wrap_content"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:onClick="cancel"
             android:textSize="15dp"
             android:layout_height="wrap_content" />

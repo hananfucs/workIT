@@ -24,14 +24,14 @@
 
             <RadioButton
                 android:layout_width="wrap_content"
-                android:text="Calories"
+                android:text="@string/calories"
                 android:id="@+id/calories_radio"
                 android:textColor="#FFFFFFFF"
                 android:onClick="modifyChart"
                 android:layout_height="wrap_content" />
             <RadioButton
                 android:layout_width="wrap_content"
-                android:text="Duration"
+                android:text="@string/time"
                 android:id="@+id/duration_radio"
                 android:textColor="#FFFFFFFF"
                 android:onClick="modifyChart"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content" />
             <RadioButton
                 android:layout_width="wrap_content"
-                android:text="Distance"
+                android:text="@string/distance"
                 android:id="@+id/distance_radio"
                 android:onClick="modifyChart"
                 android:textColor="#FFFFFFFF"
@@ -49,7 +49,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="Add Workout"
+            android:text="@string/add_workout"
             android:layout_gravity="center_vertical"
             android:onClick="addCardioWorkout"
             android:layout_height="wrap_content" />

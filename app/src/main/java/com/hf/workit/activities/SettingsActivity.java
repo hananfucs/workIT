@@ -32,9 +32,9 @@ public class SettingsActivity extends ListActivity {
 
         SettingsListItem[] drawerItem = new SettingsListItem[3];
 
-        drawerItem[0] = new SettingsListItem("Vibrate");
-        drawerItem[1] = new SettingsListItem("Whistle");
-        drawerItem[2] = new SettingsListItem("CountDown");
+        drawerItem[0] = new SettingsListItem(getResources().getString(R.string.vibrate));
+        drawerItem[1] = new SettingsListItem(getResources().getString(R.string.whistle));
+        drawerItem[2] = new SettingsListItem(getResources().getString(R.string.countdown));
 
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.settings_list_item, drawerItem);
 

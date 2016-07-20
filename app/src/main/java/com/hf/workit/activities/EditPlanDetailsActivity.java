@@ -82,7 +82,7 @@ public class EditPlanDetailsActivity extends Activity {
             isNew = false;
         }
         setLayout();
-        getActionBar().setTitle("Details");
+        getActionBar().setTitle(getResources().getString(R.string.details));
         getActionBar().setDisplayHomeAsUpEnabled(true);
         mContext = this;
     }
@@ -155,7 +155,7 @@ public class EditPlanDetailsActivity extends Activity {
         }
 
         if (!savePlan(isNew)) {
-             Utils.popToast(this, "Enter plan name first", Toast.LENGTH_SHORT);
+             Utils.popToast(this, getResources().getString(R.string.plan_name_err), Toast.LENGTH_SHORT);
             return;
         }
         Intent i = new Intent(this, EditPlanContentActivity.class);
@@ -172,7 +172,7 @@ public class EditPlanDetailsActivity extends Activity {
 
     public void saveAndReturn(View v) {
         if (!savePlan(isNew))
-            Utils.popToast(this, "Nothing to save", Toast.LENGTH_SHORT);
+            Utils.popToast(this, getResources().getString(R.string.nothing_to_save), Toast.LENGTH_SHORT);
         finish();
     }
 
@@ -205,7 +205,7 @@ public class EditPlanDetailsActivity extends Activity {
     @Override
     public void onBackPressed() {
         if (!savePlan(isNew))
-            Utils.popToast(this, "Nothing to save", Toast.LENGTH_SHORT);
+            Utils.popToast(this, getResources().getString(R.string.nothing_to_save), Toast.LENGTH_SHORT);
 //            Toast.makeText(this, "Nothing to save", Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -213,8 +213,8 @@ public class EditPlanDetailsActivity extends Activity {
 
     public void deletePlan(View v) {
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setCustomTitle(Utils.createTitleView(this, "Delete Plan"))
-                .setMessage("Are you sure you want to delete this Plan?")
+                .setCustomTitle(Utils.createTitleView(this, getResources().getString(R.string.delete_plan)))
+                .setMessage(getResources().getString(R.string.delete_plan_msg))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (currPlan != null)
@@ -285,7 +285,7 @@ public class EditPlanDetailsActivity extends Activity {
             e.printStackTrace();
             return;
         }
-        mSharePlanText.setText("Please Wait...");
+        mSharePlanText.setText(getResources().getString(R.string.please_wait));
         Utils.uploadPlan(planJsonLocal, mShareCodeHandler, this);
 
     }
@@ -293,14 +293,14 @@ public class EditPlanDetailsActivity extends Activity {
     private Handler mShareCodeHandler = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == Utils.ERR_NO_INTERNET) {
-                Utils.popToast(mContext, "No Internet Connection", Toast.LENGTH_SHORT);
-                mSharePlanText.setText("Share");
+                Utils.popToast(mContext, getResources().getString(R.string.no_internet), Toast.LENGTH_SHORT);
+                mSharePlanText.setText(getResources().getString(R.string.share_only));
                 return;
             }
 
 
             String code = (String) msg.obj;
-            mSharePlanText.setText("Share Code: " + code);
+            mSharePlanText.setText(getResources().getString(R.string.share_code) + code);
         }
     };
 }

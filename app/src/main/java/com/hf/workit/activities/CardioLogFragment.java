@@ -66,16 +66,16 @@ public class CardioLogFragment extends ListFragment {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
 
 
-        alertDialog.setCustomTitle(Utils.createTitleView(getActivity(), "Add Cardio Exercise"));
+        alertDialog.setCustomTitle(Utils.createTitleView(getActivity(), getResources().getString(R.string.add_cardio)));
 
-        alertDialog.setMessage("Exercise Name:");
+        alertDialog.setMessage(getResources().getString(R.string.exercise_name));
         final EditText input = new EditText(getActivity());
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
 
         alertDialog.setView(input);
-        alertDialog.setPositiveButton("OK",
+        alertDialog.setPositiveButton(android.R.string.ok,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -85,7 +85,7 @@ public class CardioLogFragment extends ListFragment {
 
                     private boolean addCardioExercise(String s) {
                         if (PlanManager.getCardios().containsValue(s)) {
-                            Toast.makeText(getActivity(), "Already Have " + s, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getString(R.string.already_have) + s, Toast.LENGTH_SHORT).show();
                             return false;
                         }
                         PlanManager.getCardios().put(UUID.randomUUID().toString(), s);
@@ -93,7 +93,7 @@ public class CardioLogFragment extends ListFragment {
                         return true;
                     }
                 });
-        alertDialog.setNegativeButton("Cancel",
+        alertDialog.setNegativeButton(android.R.string.cancel,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog

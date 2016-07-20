@@ -90,7 +90,7 @@ public class AddCardioWorkoutFloat extends Activity {
         float distance = getValueFromText(mDistanceText);
         int calories = (int) getValueFromText(mCaloriesText);
         if ((calories * distance * duration) == 0)
-            Utils.popToast(this, "Please fill valid values", Toast.LENGTH_SHORT);
+            Utils.popToast(this, getResources().getString(R.string.valid_values), Toast.LENGTH_SHORT);
         else{
             Utils.getDBHelper().addCardio(currentWorkoutId, duration, distance, calories, mWorkoutDate);
             Intent returnIntent = new Intent();

@@ -26,17 +26,10 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="START Exercise 1"
+            android:text="@string/start_ex_1"
             android:onClick="buttonAction"
             android:id="@+id/button_start"
             android:layout_weight="1"/>
-        <!--<Button-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="DONE"-->
-            <!--android:id="@+id/button_done"-->
-            <!--android:onClick="done"-->
-            <!--android:layout_weight="1"/>-->
     </LinearLayout>
         <Space
             android:layout_width="fill_parent"
@@ -66,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_gravity="left"
-                android:text="Sets Left"/>
+                android:text="@string/sets_left"/>
 
         </LinearLayout>
 
@@ -137,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_gravity="left"
-                android:text="Weight:"/>
+                android:text="@string/weight"/>
             <Space
                 android:layout_width="20dp"
                 android:layout_height="match_parent" />
@@ -243,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_gravity="left"
-                        android:text="Weight:"/>
+                        android:text="@string/weight"/>
                     <Space
                         android:layout_width="20dp"
                         android:layout_height="match_parent" />
@@ -273,13 +266,9 @@
             android:layout_height="fill_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="CLOCK"
             android:textSize="60dp"
             android:textColor="#FF00FF7F"
             android:id="@+id/break_clock"/>
-
-
-
     </LinearLayout>
     </LinearLayout>
     <ImageView

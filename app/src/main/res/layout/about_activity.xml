@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="workIT"/>
+        android:text="@string/app_name" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Version:"/>
+            android:text="@string/version"/>
         <TextView
             android:id="@+id/version_text"
             android:text="1.0"
@@ -42,20 +42,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Concept, Code, Design:"/>
+        android:text="@string/code_design_concept"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Hanan Fucs"/>
+        android:text="@string/dev_name"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="contactHanan"
         android:textColor="@android:color/holo_blue_light"
-        android:text="hananfu@gmail.com"/>
+        android:text="@string/dev_email"/>
     <Space
         android:layout_width="wrap_content"
         android:layout_height="25dp" />
@@ -67,9 +67,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Icons:"/>
+            android:text="@string/icons"/>
         <TextView
-            android:text="Google"
+            android:text="@string/icons_sup"
             android:onClick="googleCredit"
             android:layout_width="wrap_content"
             android:textColor="@android:color/holo_blue_light"
@@ -85,9 +85,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Graphs:"/>
+            android:text="@string/graphs"/>
         <TextView
-            android:text="HelloCharts"
+            android:text="@string/graphs_sup"
             android:onClick="chartsCredit"
             android:layout_width="wrap_content"
             android:textColor="@android:color/holo_blue_light"
@@ -103,9 +103,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Share Service:"/>
+            android:text="@string/share"/>
         <TextView
-            android:text="paste.ee"
+            android:text="@string/share_sup"
             android:onClick="pasteCredit"
             android:textColor="@android:color/holo_blue_light"
             android:layout_width="wrap_content"

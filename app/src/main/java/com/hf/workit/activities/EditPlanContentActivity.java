@@ -47,7 +47,6 @@ public class EditPlanContentActivity extends ListActivity implements AdapterView
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-//                NavUtils.navigateUpFromSameTask(this);
                 onBackPressed();
                 return true;
         }
@@ -63,7 +62,7 @@ public class EditPlanContentActivity extends ListActivity implements AdapterView
         lv = (ListView)findViewById(android.R.id.list);
         lv.setOnItemClickListener(this);
         createList();
-        getActionBar().setTitle("Exercises");
+        getActionBar().setTitle(getResources().getString(R.string.exercises));
     }
 
     private void createList() {

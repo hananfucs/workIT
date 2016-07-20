@@ -69,7 +69,7 @@ public class DisplayImageActivity extends Activity {
             e.printStackTrace();
         }
         share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/temporary_file.jpg"));
-        startActivity(Intent.createChooser(share, "Share Image"));
+        startActivity(Intent.createChooser(share, getResources().getString(R.string.share_image)));
     }
 
     @Override

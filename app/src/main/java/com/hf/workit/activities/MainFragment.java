@@ -88,9 +88,9 @@ public class MainFragment extends Fragment {
         }
         if (name != null) {
             String dateS = (String) DateFormat.format("dd/MM/yyyy", date);
-            mLastWorkoutText.setText(dateS + "\n" + name + "\n" + "Completed: " + completed + "%");
+            mLastWorkoutText.setText(dateS + "\n" + name + "\n" + getResources().getString(R.string.completed) + ": " + completed + "%");
         } else
-            mLastWorkoutText.setText("No Workouts recorded!");
+            mLastWorkoutText.setText(getResources().getString(R.string.no_workouts));
     }
 
     private void createHintThread() {

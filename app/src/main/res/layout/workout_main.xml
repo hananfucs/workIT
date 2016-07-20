@@ -3,10 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
-
-
-
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -17,7 +13,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Finish Workout "
+        android:text="@string/finish_workout"
         android:onClick="finishWorkout"
         android:layout_weight="1"
         android:gravity="bottom"
@@ -29,7 +25,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Edit Plan "
+        android:text="@string/edit_plan"
         android:onClick="editPlan"
         android:layout_weight="1"
         android:gravity="bottom"

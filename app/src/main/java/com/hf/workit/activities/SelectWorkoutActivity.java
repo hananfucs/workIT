@@ -62,7 +62,7 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
         refreshPlans();
         lv = (ListView)findViewById(android.R.id.list);
         lv.setOnItemClickListener(this);
-        getActionBar().setTitle("Start");
+        getActionBar().setTitle(getResources().getString(R.string.start));
     }
 
     private void refreshPlans() {
@@ -70,9 +70,9 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
         mPlansDisplayNames.clear();
         for(IPlan pl:mPlans){
             if (pl.getExpirationTime() - System.currentTimeMillis() < 0)
-                mPlansDisplayNames.add(pl.getTitle() + " - Expired!");
+                mPlansDisplayNames.add(pl.getTitle() + " - " + getResources().getString(R.string.expired) + "!");
             else if (pl.getExpirationTime() - System.currentTimeMillis() < Constatnts.DAY_MILLIS * 10)
-                mPlansDisplayNames.add(pl.getTitle() + " - Expires in " + (pl.getExpirationTime() - System.currentTimeMillis())/Constatnts.DAY_MILLIS + " days!");
+                mPlansDisplayNames.add(pl.getTitle() + " - " + getResources().getString(R.string.expires_in) + " " + (pl.getExpirationTime() - System.currentTimeMillis())/Constatnts.DAY_MILLIS + getResources().getString(R.string.days));
             else
                 mPlansDisplayNames.add(pl.getTitle());
             mPlansNames.add(pl.getTitle());
@@ -108,8 +108,8 @@ public class SelectWorkoutActivity extends ListActivity implements AdapterView.O
 
         String currentWorkoutName = LogManager.getCurrentPlanName();
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setCustomTitle(Utils.createTitleView(this, "Start Another Workout"))
-                .setMessage("Are you sure you want to end workout " + currentWorkoutName + " and start " + workoutName + "?")
+                .setCustomTitle(Utils.createTitleView(this, getResources().getString(R.string.start_another_workout)))
+                .setMessage(getResources().getString(R.string.start_another_workout_msg_1) + currentWorkoutName + getResources().getString(R.string.start_another_workout_msg_2) + workoutName + "?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         LogManager.getExerciseStateList().clear();

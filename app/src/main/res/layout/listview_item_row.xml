@@ -20,7 +20,6 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/imageViewIcon"
         android:paddingRight="10dp"
-        android:text="Folder name here."
         android:textColor="#ffffff" />
 
 </RelativeLayout>

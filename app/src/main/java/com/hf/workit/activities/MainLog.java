@@ -26,13 +26,13 @@ public class MainLog extends FragmentActivity implements ActionBar.TabListener, 
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = { "Gym", "Cardio"};
+    private String[] tabs;/* = { "Gym", "Cardio"};*/
 
     @Override
     public void onCreate(Bundle bd) {
         super.onCreate(bd);
         setContentView(R.layout.main_log);
-
+        tabs = new String[]{getResources().getString(R.string.gym), getResources().getString(R.string.cardio)};
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
@@ -47,7 +47,7 @@ public class MainLog extends FragmentActivity implements ActionBar.TabListener, 
             actionBar.addTab(actionBar.newTab().setText(tab_name)
                     .setTabListener(this));
         }
-        getActionBar().setTitle("LOG");
+        getActionBar().setTitle(getResources().getString(R.string.log));
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 

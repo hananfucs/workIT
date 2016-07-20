@@ -24,9 +24,9 @@ import java.util.List;
  */
 public class GymLogFragment extends Fragment implements ExpandableListView.OnChildClickListener{
 
-    private static final String TIMES_PER_WEEK = "Average Times per week: ";
-    private static final String AVERAGE_LENGTH = "Average Length: ";
-    private static final String COMPLETED = "Average % Completed: ";
+//    private static final String TIMES_PER_WEEK = "Average Times per week: ";
+//    private static final String AVERAGE_LENGTH = "Average Length: ";
+//    private static final String COMPLETED = "Average % Completed: ";
 
 
     ExpandableListAdapter listAdapter;
@@ -67,9 +67,9 @@ public class GymLogFragment extends Fragment implements ExpandableListView.OnChi
         for (IPlan plan : plans) {
             listDataHeader.add(plan.getTitle());
             List<String> planDetails = new ArrayList<String>();
-            planDetails.add(TIMES_PER_WEEK + LogManager.getPlanAveragePerWeek(plan.planId()));
-            planDetails.add(AVERAGE_LENGTH + LogManager.getPlanAverageLength(plan.planId()));
-            planDetails.add(COMPLETED + LogManager.getPlanAverageCompleted(plan.planId()));
+            planDetails.add(getResources().getString(R.string.avg_times_per_week) + LogManager.getPlanAveragePerWeek(plan.planId()));
+            planDetails.add(getResources().getString(R.string.avg_length) + LogManager.getPlanAverageLength(plan.planId()));
+            planDetails.add(getResources().getString(R.string.avg_completed) + LogManager.getPlanAverageCompleted(plan.planId()));
             listDataChild.put(plan.getTitle(), planDetails); // Header, Child data
         }
 

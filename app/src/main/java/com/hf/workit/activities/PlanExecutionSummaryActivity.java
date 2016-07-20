@@ -116,14 +116,14 @@ public class PlanExecutionSummaryActivity extends Activity {
         mPlanNameText.setText(mCurrentPlan.getTitle());
 
         mCoachNameText = (TextView)findViewById(R.id.coach_name_s);
-        mCoachNameText.setText("Trainer: " + mCurrentPlan.getCoach());
+        mCoachNameText.setText(getResources().getString(R.string.trainer) + ": " + mCurrentPlan.getCoach());
 
         mClubNameText = (TextView)findViewById(R.id.club_name_s);
-        mClubNameText .setText("Club: " + mCurrentPlan.getClub());
+        mClubNameText .setText(getResources().getString(R.string.club) + ": " + mCurrentPlan.getClub());
 
         mStartDateText = (TextView)findViewById(R.id.start_date_s);
         String startDate = (String) DateFormat.format("dd-MM-yyyy", mCurrentPlan.getmCreationTime());
-        mStartDateText.setText("Creation: " + startDate);
+        mStartDateText.setText(getResources().getString(R.string.creation) +": " + startDate);
 
         mChart = (LineChartView)findViewById(R.id.chart);
 
@@ -198,8 +198,8 @@ public class PlanExecutionSummaryActivity extends Activity {
         data = new LineChartData(lines);
         Axis axisX = Axis.generateAxisFromCollection(generatePointsAxis(),generateDatesAxis());
         Axis axisY = new Axis().setHasLines(true);
-        axisX.setName("Workout Number");
-        axisY.setName("% Completed");
+        axisX.setName(getResources().getString(R.string.workout_num));
+        axisY.setName(getResources().getString(R.string.percentage_completed));
 
         data.setAxisXBottom(axisX);
         data.setAxisYLeft(axisY);
@@ -250,8 +250,8 @@ public class PlanExecutionSummaryActivity extends Activity {
         @Override
         public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
             PlanExecution clickedPlan = workouts.get(pointIndex);
-            Utils.popToast(mContext, "Date: " + clickedPlan.getFormatedDate() + "\nLength: " +
-                    clickedPlan.getmLength()/(1000*60) + " minutes\nCompleted: " + clickedPlan.getmCompleted()
+            Utils.popToast(mContext, getResources().getString(R.string.date) + ": " + clickedPlan.getFormatedDate() + "\n" + getResources().getString(R.string.length)+": " +
+                    clickedPlan.getmLength()/(1000*60) +  getResources().getString(R.string.minutes)+ "\n"+ getResources().getString(R.string.completed) +": " + clickedPlan.getmCompleted()
                     + "%", Toast.LENGTH_SHORT);
         }
 

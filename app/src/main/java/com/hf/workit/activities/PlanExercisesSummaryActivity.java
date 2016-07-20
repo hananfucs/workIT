@@ -24,10 +24,6 @@ import java.util.List;
  */
 public class PlanExercisesSummaryActivity extends Activity implements ExpandableListView.OnChildClickListener {
 
-    private static final String CURRENT_WEIGHT = "Current Weight: ";
-    private static final String COMPLETED = "Average % Completed: ";
-
-
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     ArrayList<String> listDataHeader;
@@ -82,8 +78,8 @@ public class PlanExercisesSummaryActivity extends Activity implements Expandable
             exercisesIDs.add(String.valueOf(exercise.getId()));
             listDataHeader.add(exercise.getTitle() + " - " + exercise.getExercise());
             List<String> exerciseDetails = new ArrayList<String>();
-            exerciseDetails.add(CURRENT_WEIGHT + exercise.getWeight());
-            exerciseDetails.add(COMPLETED + LogManager.getExerciseAverageCompletion(String.valueOf(exercise.getId())));
+            exerciseDetails.add(getResources().getString(R.string.current_weight) + exercise.getWeight());
+            exerciseDetails.add(getResources().getString(R.string.avg_percentage) + LogManager.getExerciseAverageCompletion(String.valueOf(exercise.getId())));
             listDataChild.put(exercise.getTitle() + " - " + exercise.getExercise(), exerciseDetails); // Header, Child data
         }
 

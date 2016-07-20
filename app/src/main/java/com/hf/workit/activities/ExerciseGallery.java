@@ -203,18 +203,18 @@ public class ExerciseGallery extends Activity {
 
     public void addPhoto(View V) {
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setCustomTitle(Utils.createTitleView(this, "Get New Picture"))
-                .setMessage("Take Picture or Choose From Gallery?")
-                .setPositiveButton("Take Picture", new DialogInterface.OnClickListener() {
+                .setCustomTitle(Utils.createTitleView(this, getResources().getString(R.string.get_new_pic)))
+                .setMessage(getResources().getString(R.string.get_new_pic_msg))
+                .setPositiveButton(getResources().getString(R.string.take_pic), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         getPicFromCamera();
                     }
                 })
-                .setNegativeButton("From Gallery", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.from_gallery), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(pickPhoto , 1);
+                        startActivityForResult(pickPhoto, 1);
                     }
                 })
                 .setIcon(android.R.drawable.picture_frame)

@@ -150,7 +150,7 @@ public class ExecuteExercise extends Activity {
         mDescriptionText.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.METHOD_DESCRIPTION));
         mAmountText.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.REPEATS));
         mAmount = mCurrentExerciseJson.getInt(Constatnts.ExerciseJson.REPEATS);
-        mUnitText.setText(mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS) ? "Repeats" : "Seconds");
+        mUnitText.setText(mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS) ? getResources().getString(R.string.repeats) : getResources().getString(R.string.seconds));
         isRepeats = mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS);
         mWeightText.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.WEIGHT));
         mBreakTime = mCurrentExerciseJson.getInt(Constatnts.ExerciseJson.BREAK);
@@ -166,7 +166,7 @@ public class ExecuteExercise extends Activity {
             mDescriptionText2.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.METHOD_DESCRIPTION2));
             mAmountText2.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.REPEATS2));
             mAmount2 = mCurrentExerciseJson.getInt(Constatnts.ExerciseJson.REPEATS2);
-            mUnitText2.setText(mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS2) ? "Repeats" : "Seconds");
+            mUnitText2.setText(mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS2) ? getResources().getString(R.string.repeats) : getResources().getString(R.string.seconds));
             isRepeats2 = mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS2);
             mWeightText2.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.WEIGHT2));
             mClockText2.setText("");
@@ -228,21 +228,21 @@ public class ExecuteExercise extends Activity {
             mCurrentPhase = PHASE_EX_1;
             LogManager.setCurrentExercisePhase(PHASE_EX_1);
             if (isDouble)
-                mStartButton.setText("START Exercise 2");
+                mStartButton.setText(getResources().getString(R.string.start_ex_2));
             else
-                mStartButton.setText("DONE");
+                mStartButton.setText(getResources().getString(R.string.done));
         }
         else if (mCurrentPhase == PHASE_EX_1) {
             mCurrentPhase = PHASE_EX_2;
             LogManager.setCurrentExercisePhase(PHASE_EX_2);
-            mStartButton.setText("DONE");
+            mStartButton.setText(getResources().getString(R.string.done));
         } else if (mCurrentPhase == PHASE_BREAK) {
             mCurrentPhase = PHASE_EX_1;
             LogManager.setCurrentExercisePhase(PHASE_EX_1);
             if (isDouble)
-                mStartButton.setText("START Exercise 2");
+                mStartButton.setText(getResources().getString(R.string.start_ex_2));
             else
-                mStartButton.setText("DONE");
+                mStartButton.setText(getResources().getString(R.string.done));
         } else if (mCurrentPhase == PHASE_EX_2)
             return;
         updateUiState(true);
@@ -278,11 +278,11 @@ public class ExecuteExercise extends Activity {
         if (isRepeatsLocal) {
             stopService(new Intent(this, ClockService.class));
             if (mCurrentPhase == PHASE_EX_1) {
-                mClockText.setText("GO!");
+                mClockText.setText(getResources().getString(R.string.go));
                 postNonRpeatNotificatoion(mExerciseNameText.getText());
             }
             else if (mCurrentPhase == PHASE_EX_2) {
-                mClockText2.setText("GO!");
+                mClockText2.setText(getResources().getString(R.string.go));
                 postNonRpeatNotificatoion(mExerciseNameText2.getText());
             }
         } else {
@@ -318,7 +318,7 @@ public class ExecuteExercise extends Activity {
     private void postNonRpeatNotificatoion(CharSequence text) {
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Notification.Builder notification = new Notification.Builder(mContext);
-        notification.setContentTitle("GO GO GO!!!")
+        notification.setContentTitle(getResources().getString(R.string.go_go_go))
                 .setSubText(text)
                 .setAutoCancel(false)
                 .setOngoing(true)
@@ -330,7 +330,7 @@ public class ExecuteExercise extends Activity {
 
 
     public void done() {
-        mStartButton.setText("START Exercise 1");
+        mStartButton.setText(getResources().getString(R.string.start_ex_1));
         if (isDouble && mCurrentPhase == PHASE_EX_2) {
             mCurrentPhase = PHASE_BREAK;
             LogManager.setCurrentExercisePhase(PHASE_BREAK);
@@ -361,8 +361,8 @@ public class ExecuteExercise extends Activity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setCustomTitle(Utils.createTitleView(this, "Finish Exercise"))
-                .setMessage("Are you sure you want to end this exercise??")
+                .setCustomTitle(Utils.createTitleView(this, getResources().getString(R.string.finish_exercise)))
+                .setMessage(getResources().getString(R.string.finish_exercise_msg))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         endExercise();

@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Name"
+            android:text="@string/name"
             android:layout_alignRight="@+id/linearLayout"/>
 
             <Space
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Trainer"
+                android:text="@string/trainer"
                 android:layout_alignRight="@+id/linearLayout"
                 android:lines="1"
                 android:singleLine="true"
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Club"
+                android:text="@string/club"
                 android:layout_alignRight="@+id/linearLayout"/>
             <Space
                 android:layout_width="10dp"
@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Times per week"
+                android:text="@string/times_per_week"
                 android:layout_weight="1"
                 android:layout_gravity="left|center_vertical"
                 android:layout_alignRight="@+id/linearLayout"/>
@@ -139,12 +139,12 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_weight="1"
-                android:text="Expiration: "
+                android:text="@string/expiration"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <Button
                 android:id="@+id/expiration_button"
-                android:text="Choose Date..."
+                android:text="@string/choose_date"
                 android:onClick="openCalander"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -158,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Exercises"
+            android:text="@string/exercises"
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Save"
+            android:text="@string/save"
             android:id="@+id/save_plan"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
@@ -183,7 +183,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Share"
+            android:text="@string/share_only"
             android:id="@+id/share_plan"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
@@ -196,7 +196,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Delete Plan"
+            android:text="@string/delete"
             android:id="@+id/delete_plan"
             android:layout_gravity="center_horizontal"
             android:clickable="true"

@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Muscle Group"
+                android:text="@string/muscle_group"
                 android:layout_alignRight="@+id/linearLayout"/>
             <Space
                 android:layout_width="10dp"
@@ -50,7 +50,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Single"
+            android:text="@string/single"
             android:id="@+id/single_double"
             android:layout_gravity="center_horizontal" />
 
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="# of Sets"
+                android:text="@string/num_of_sets"
                 android:layout_weight="1"
                 android:layout_gravity="left|center_vertical"
                 android:layout_alignRight="@+id/linearLayout"/>
@@ -87,7 +87,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Break:"
+                android:text="@string/break_t"
                 android:layout_weight="1"
                 android:layout_alignRight="@+id/linearLayout"/>
 
@@ -105,7 +105,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Seconds"
+                android:text="@string/seconds"
                 android:layout_weight="1"
                 android:layout_alignRight="@+id/linearLayout"/>
         </LinearLayout>
@@ -118,7 +118,7 @@
             android:id = "@+id/gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pictures"
+            android:text="@string/pictures"
             android:onClick="openGallery"/>
 
 
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Name"
+                android:text="@string/name"
                 android:layout_alignRight="@+id/linearLayout"/>
             <Space
                 android:layout_width="10dp"
@@ -163,7 +163,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Description"
+                android:text="@string/description"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -191,7 +191,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Weight"
+                android:text="@string/weight"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <EditText
@@ -230,7 +230,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Repeats"
+                android:text="@string/repeats"
                 android:id="@+id/ex_length1"
                 android:clickable="true"
                 android:onClick="setRepeat1"
@@ -257,7 +257,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Name"
+                android:text="@string/name"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -281,7 +281,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Description"
+                android:text="@string/description"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -307,7 +307,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Weight"
+                android:text="@string/weight"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <EditText
@@ -344,7 +344,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Repeats"
+                android:text="@string/repeats"
                 android:id="@+id/ex_length2"
                 android:clickable="true"
                 android:onClick="setRepeat2"
@@ -374,7 +374,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="@string/save"
             android:onClick="saveAndReturn"
             android:id="@+id/save_exercise"
             android:layout_weight="1"
@@ -383,7 +383,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Delete"
+            android:text="@string/delete"
             android:onClick="deleteAndReturn"
             android:id="@+id/delete_exercise"
             android:layout_weight="1"

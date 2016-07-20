@@ -33,12 +33,23 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private String[] sideMenuTitles = {"Start Workout", "Workout Log", "Edit Plans", "Settings", "About"};
+    private String[] sideMenuTitles; /* = {getResources().getString(R.string.start_workout),
+                                        getResources().getString(R.string.workout_log),
+                                        getResources().getString(R.string.edit_plans),
+                                        getResources().getString(R.string.settings),
+                                        getResources().getString(R.string.about)};*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sideMenuTitles  = new String[]{getResources().getString(R.string.start_workout),
+                getResources().getString(R.string.workout_log),
+                getResources().getString(R.string.edit_plans),
+                getResources().getString(R.string.settings),
+                getResources().getString(R.string.about)};
+
 
         ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[5];
 
@@ -145,7 +156,7 @@ public class MainActivity extends Activity {
         if (System.currentTimeMillis() - mLastBackPress < (1000 * 10))
             super.onBackPressed();
         else
-            Utils.popToast(this, "Press 'Back' again to exit", Toast.LENGTH_SHORT);
+            Utils.popToast(this, getResources().getString(R.string.double_back), Toast.LENGTH_SHORT);
         mLastBackPress = System.currentTimeMillis();
     }
 

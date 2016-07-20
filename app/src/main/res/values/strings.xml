@@ -8,13 +8,142 @@
     <string name="log_btn">Workout Log</string>
     <string name="view_workout_btn">View Plans</string>
     <string name="title_activity_main_log">MainLog</string>
-
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-
-
     <string name="navigation_drawer_open">"Open"</string>
     <string name="navigation_drawer_close">"Close"</string>
+
+    <!--About-->
+    <string name="version">"Version:"</string>
+    <string name="code_design_concept">"Concept, Code, Design:"</string>
+    <string name="dev_name">"Hanan Fucs"</string>
+    <string name="dev_email">"hananfu@gmail.com"</string>
+
+    <string name="icons">"Icons: "</string>
+    <string name="icons_sup">"Google"</string>
+
+    <string name="graphs">"Graphs: "</string>
+    <string name="graphs_sup">"HelloCharts"</string>
+
+    <string name="share">"Share Service: "</string>
+    <string name="share_sup">"paste.ee"</string>
+
+    <!--Add Cardio-->
+    <string name="time">"Duration"</string>
+    <string name="distance">"Distance"</string>
+    <string name="calories">"Calories"</string>
+    <string name="date">"Date"</string>
+    <string name="add">"Add"</string>
+    <string name="today">"TODAY"</string>
+    <string name="cancel">"Cancel"</string>
+    <string name="plan_expiration">"Plan Expiration Date"</string>
+    <string name="add_workout">"Add WOrkout"</string>
+    <string name="share_only">"Share"</string>
+    <string name="delete">"Delete"</string>
+
+    <!--Edit Exercise-->
+    <string name="muscle_group">"Muscle Group"</string>
+    <string name="single">"Single"</string>
+    <string name="num_of_sets">"Number of Sets"</string>
+    <string name="break_t">"Break:"</string>
+    <string name="seconds">"Seconds"</string>
+    <string name="pictures">"Pictures"</string>
+    <string name="name">"Name"</string>
+    <string name="description">"Description"</string>
+    <string name="weight">"Weight"</string>
+    <string name="repeats">"Repeats"</string>
+    <string name="save">"Save"</string>
+
+    <!--Edit Plan Details-->
+    <string name="trainer">"Trainer"</string>
+    <string name="club">"Club"</string>
+    <string name="times_per_week">"TImes Per Week"</string>
+    <string name="expiration">"Expiration"</string>
+    <string name="choose_date">"Choose Date..."</string>
+    <string name="exercises">"Exercises"</string>
+
+    <!--Execute Exercise-->
+    <string name="start_ex_1">"START Exercise 1"</string>
+    <string name="start_ex_2">"START Exercise 2"</string>
+    <string name="sets_left">"Sets Left"</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="start_workout_now">"Start Workout Now!"</string>
+    <string name="last_workout">"Last Workout"</string>
+    <string name="finish_workout">"Finish Workout"</string>
+    <string name="edit_plan">"Edit Plan"</string>
+
+
+    <!--Add Cardio-->
+    <string name="valid_values">"Please fill valid values"</string>
+    <string name="add_cardio">"Add Cardio Exercise"</string>
+    <string name="exercise_name">"Exercise Name"</string>
+    <string name="already_have">"Already Have "</string>
+    <string name="log">"LOG"</string>
+    <string name="workout_date">"Workout Date"</string>
+    <string name="minutes">"Minutes"</string>
+    <string name="share_image">"Share Image"</string>
+    <string name="edit_exercise">"Edit Exercise"</string>
+    <string name="double_t">"Double"</string>
+    <string name="exercise_def_err">"Please enter Muscle Group and Exercise Name"</string>
+    <string name="details">"Details"</string>
+    <string name="plan_name_err">"Enter Plan Name first"</string>
+    <string name="nothing_to_save">"Nothing to save"</string>
+    <string name="delete_plan">"Delete Plan"</string>
+    <string name="delete_plan_msg">"Are you sure you want to delete this Plan?"</string>
+    <string name="please_wait">"Please Wait…"</string>
+    <string name="no_internet">"No internet Connection"</string>
+    <string name="share_code">"Share Code: "</string>
+    <string name="plans">"Plans"</string>
+    <string name="create_new_plan">"Create New Plan"</string>
+    <string name="new_plan_or_code">"Create a new plan or insert share code?"</string>
+    <string name="create_new">"Create New"</string>
+    <string name="insert_code">"Insert Share Code"</string>
+    <string name="oops">"OOPS! Something went wrong"</string>
+    <string name="done">"DONE"</string>
+    <string name="go">"GO!"</string>
+    <string name="go_go_go">"GO GO GO!!!"</string>
+    <string name="finish_exercise">"Finish Exercise"</string>
+    <string name="finish_exercise_msg">"Are you sure you want to end this exercise??"</string>
+    <string name="plan_name">"Plan Name "</string>
+    <string name="avg_completed">"Average Completion"</string>
+    <string name="get_new_pic">"Get New Picture"</string>
+    <string name="get_new_pic_msg">"Take Picture or Choose From Gallery?"</string>
+    <string name="take_pic">"Take Picture"</string>
+    <string name="from_gallery">"From Gallery"</string>
+    <string name="avg_times_per_week">"Average Times Per Week"</string>
+    <string name="avg_length">"Average Length"</string>
+    <string name="avg_percentage">"Average % Completed"</string>
+
+    <string name="start_workout">"Start Workout"</string>
+    <string name="workout_log">"Workout Log"</string>
+    <string name="edit_plans">"Edit Plans"</string>
+    <string name="settings">"Settings"</string>
+    <string name="about">"About"</string>
+    <string name="double_back">"Press 'Back' again to exit"</string>
+    <string name="completed">"Completed"</string>
+    <string name="no_workouts">"No WOrkouts Recorded"</string>
+    <string name="gym">"Gym"</string>
+    <string name="cardio">"Cardio"</string>
+    <string name="creation">"Creation"</string>
+    <string name="workout_num">"Workout Number"</string>
+    <string name="percentage_completed">"% Completed"</string>
+    <string name="length">"Length"</string>
+    <string name="current_weight">"Current Weight"</string>
+    <string name="start">"Start"</string>
+    <string name="expired">"Expired"</string>
+    <string name="expires_in">"Expires in"</string>
+    <string name="days">"days"</string>
+    <string name="start_another_workout">"Start Another Workout"</string>
+    <string name="start_another_workout_msg_1">"Are you sure you want to end workout "</string>
+    <string name="start_another_workout_msg_2">" and start "</string>
+    <string name="vibrate">"Vibrate"</string>
+    <string name="whistle">"Whistle"</string>
+    <string name="countdown">"CountDown"</string>
+    <string name="end_workout_msg">"Are you sure you want to end this workout?"</string>
+    <string name="workout_not_complete">"Workout Not Complete"</string>
+    <string name="workout_complete">"Workout Complete"</string>
+    <string name="great_job">"Great Job!"</string>
+    <string name="plan">"Plan"</string>
 </resources>
 

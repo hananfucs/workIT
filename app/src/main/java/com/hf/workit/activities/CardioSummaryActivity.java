@@ -94,7 +94,7 @@ public class CardioSummaryActivity extends Activity {
         mContext = this;
         mExerciseID = getIntent().getStringExtra(IExercise.EXERCISE_ID);
         mChart = (LineChartView)findViewById(R.id.exercise_chart);
-        getActionBar().setTitle("LOG");
+        getActionBar().setTitle(getResources().getString(R.string.log));
 
         TextView title = (TextView)findViewById(R.id.exercise_name_c);
         title.setText(PlanManager.getCardios().get(mExerciseID));
@@ -182,16 +182,16 @@ public class CardioSummaryActivity extends Activity {
             data.setLines(lines);
         Axis axisX = Axis.generateAxisFromCollection(generatePointsAxis(),generateDatesAxis());
         Axis axisY = new Axis().setHasLines(true);
-        axisX.setName("Workout Date");
+        axisX.setName(getResources().getString(R.string.workout_date));
         switch (dataType) {
             case DATA_DISTANCE:
-                axisY.setName("Distance");
+                axisY.setName(getResources().getString(R.string.distance));
                 break;
             case DATA_DURATION:
-                axisY.setName("Duration");
+                axisY.setName(getResources().getString(R.string.time));
                 break;
             case DATA_CALORIES:
-                axisY.setName("Calories");
+                axisY.setName(getResources().getString(R.string.calories));
                 break;
         }
 
@@ -339,9 +339,9 @@ public class CardioSummaryActivity extends Activity {
         @Override
         public void onValueSelected(int i, int pointIndex, PointValue pointValue) {
             ExerciseExecution clickedExercise = executions.get(pointIndex);
-            Utils.popToast(mContext, "Date: " + clickedExercise.getFormatedDate() + "\nDuration: " +
-                    clickedExercise.duration + " minutes\nDistance: " + clickedExercise.distance
-                    + "\nCalories: " + clickedExercise.calories, Toast.LENGTH_LONG);
+            Utils.popToast(mContext, getResources().getString(R.string.date) + clickedExercise.getFormatedDate() + "\n"+ getResources().getString(R.string.time) +
+                    clickedExercise.duration + getResources().getString(R.string.minutes) + "\n" + getResources().getString(R.string.distance) + clickedExercise.distance
+                    + "\n"+getResources().getString(R.string.calories) + clickedExercise.calories, Toast.LENGTH_LONG);
         }
 
         @Override

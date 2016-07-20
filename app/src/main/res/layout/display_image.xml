@@ -11,7 +11,7 @@
         android:layout_height="fill_parent">
 
         <Button
-            android:text="Share"
+            android:text="@string/share_only"
             android:onClick="shareImage"
             android:layout_weight="1"
             android:layout_width="fill_parent"
@@ -20,7 +20,7 @@
             android:layout_width="5dp"
             android:layout_height="wrap_content" />
         <Button
-            android:text="Delete"
+            android:text="@string/delete"
             android:onClick="deleteImage"
             android:layout_weight="1"
             android:layout_width="fill_parent"

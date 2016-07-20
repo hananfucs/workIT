@@ -69,7 +69,7 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
         refreshPlans();
         lv = (ListView)findViewById(android.R.id.list);
         lv.setOnItemClickListener(this);
-        getActionBar().setTitle("Plans");
+        getActionBar().setTitle(getResources().getString(R.string.plans));
     }
 
     private void refreshPlans() {
@@ -83,14 +83,14 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
 
     public void createPlan(View v){
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setCustomTitle(Utils.createTitleView(this, "Create New Plan"))
-                .setMessage("Create a new plan or insert share code?")
-                .setPositiveButton("Create New", new DialogInterface.OnClickListener() {
+                .setCustomTitle(Utils.createTitleView(this, getResources().getString(R.string.create_new_plan)))
+                .setMessage(getResources().getString(R.string.new_plan_or_code))
+                .setPositiveButton(getResources().getString(R.string.create_new), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         createNewPlan();
                     }
                 })
-                .setNegativeButton("Insert Share Code", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.insert_code), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         importPlan();
                     }
@@ -110,14 +110,14 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
         builder.setView(input);
 
         // Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String code = input.getText().toString();
                 Utils.getSharedPlan(code, refreshHandler, context);
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -150,9 +150,9 @@ public class EditPlansListActivity extends ListActivity implements AdapterView.O
         @Override
     public void handleMessage(Message msg) {
             if (msg.what == Utils.ERR_NO_INTERNET)
-                Utils.popToast(mContext, "No Internet Connection", Toast.LENGTH_LONG);
+                Utils.popToast(mContext, getResources().getString(R.string.no_internet), Toast.LENGTH_LONG);
             else if (msg.what == Utils.ERR_ELSE)
-                Utils.popToast(mContext, "OOPS! Something went wrong", Toast.LENGTH_LONG);
+                Utils.popToast(mContext, getResources().getString(R.string.oops), Toast.LENGTH_LONG);
             else
                 onResume();
         }

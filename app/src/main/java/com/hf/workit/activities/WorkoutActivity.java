@@ -161,7 +161,7 @@ public class WorkoutActivity extends ListActivity implements AdapterView.OnItemC
 
     private void askIfFinish() {
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setMessage("Are you sure you want to end this workout?")
+                .setMessage(getResources().getString(R.string.end_workout_msg))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         displayWorkoutStatsAndFinish();
@@ -173,7 +173,7 @@ public class WorkoutActivity extends ListActivity implements AdapterView.OnItemC
                     }
                 })
                 .setIcon(android.R.drawable.btn_star)
-                .setCustomTitle(Utils.createTitleView(this, "Workout Not Complete"))
+                .setCustomTitle(Utils.createTitleView(this, getResources().getString(R.string.workout_not_complete)))
                 .show();
     }
 
@@ -189,7 +189,7 @@ public class WorkoutActivity extends ListActivity implements AdapterView.OnItemC
         LogManager.endWorkout();
         LogManager.logWorkout();
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setCustomTitle(Utils.createTitleView(this, "Workout Complete"))
+                .setCustomTitle(Utils.createTitleView(this, getResources().getString(R.string.workout_complete)))
                 .setMessage(getFinishMessage())
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -202,11 +202,11 @@ public class WorkoutActivity extends ListActivity implements AdapterView.OnItemC
     }
 
     private String getFinishMessage() {
-        StringBuilder builder  = new StringBuilder("Great Job! \n \n");
-        builder.append("Plan: " + mCurrentPlan + "\n")
-                .append("Date: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + "\n")
-                .append("Time: " + LogManager.getWorkoutLength() + "\n")
-                .append("% Completed: " + LogManager.getWorkoutPercentage());
+        StringBuilder builder  = new StringBuilder(getResources().getString(R.string.great_job) + " \n \n");
+        builder.append(getResources().getString(R.string.plan) + ": " + mCurrentPlan + "\n")
+                .append(getResources().getString(R.string.date) + ": " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + "\n")
+                .append(getResources().getString(R.string.time) + ": " + LogManager.getWorkoutLength() + "\n")
+                .append(getResources().getString(R.string.percentage_completed) + ": " + LogManager.getWorkoutPercentage());
         return builder.toString();
     }
 

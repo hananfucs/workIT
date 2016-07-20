@@ -102,7 +102,7 @@ public class EditExerciseActivity extends Activity {
             }
         }
         initAutoComplete();
-        getActionBar().setTitle("Edit Exercise");
+        getActionBar().setTitle(getResources().getString(R.string.edit_exercise));
     }
 
     private void initAutoComplete() {
@@ -139,7 +139,7 @@ public class EditExerciseActivity extends Activity {
     private void initSingleExercise(SingleExercise exercise) throws JSONException {
         JSONObject exerciseJson = exercise.toJson();
         muscle.setText(exerciseJson.getString(Constatnts.ExerciseJson.MUSCLE));
-        singleDouble.setText("Single");
+        singleDouble.setText(getResources().getString(R.string.single));
         isSingle = true;
         secondEx.setVisibility(View.GONE);
 
@@ -148,7 +148,7 @@ public class EditExerciseActivity extends Activity {
         exName1.setText(exerciseJson.getString(Constatnts.ExerciseJson.NAME));
         machineNum1.setText(exerciseJson.getString(Constatnts.ExerciseJson.METHOD_DESCRIPTION));
         weight1.setText(String.valueOf(exerciseJson.getInt(Constatnts.ExerciseJson.WEIGHT)));
-        repeats1view.setText(exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS) ? "Repeats" : "Seconds");
+        repeats1view.setText(exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS) ? getResources().getString(R.string.repeats) : getResources().getString(R.string.seconds));
         isRepeats1 = exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS);
         repeats1.setText(String.valueOf(exerciseJson.getInt(Constatnts.ExerciseJson.REPEATS)));
 
@@ -172,7 +172,7 @@ public class EditExerciseActivity extends Activity {
     private void initDoubleExercise(DoubleExercise exercise) throws JSONException {
         JSONObject exerciseJson = exercise.toJson();
         muscle.setText(exerciseJson.getString(Constatnts.ExerciseJson.MUSCLE));
-        singleDouble.setText("Double");
+        singleDouble.setText(getResources().getString(R.string.double_t));
         isSingle = false;
         secondEx.setVisibility(View.VISIBLE);
 
@@ -182,14 +182,14 @@ public class EditExerciseActivity extends Activity {
         machineNum1.setText(exerciseJson.getString(Constatnts.ExerciseJson.METHOD_DESCRIPTION));
         weight1.setText(String.valueOf(exerciseJson.getInt(Constatnts.ExerciseJson.WEIGHT)));
         repeats1.setText(String.valueOf(exerciseJson.getInt(Constatnts.ExerciseJson.REPEATS)));
-        repeats1view.setText(exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS) ? "Repeats" : "Seconds");
+        repeats1view.setText(exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS) ? getResources().getString(R.string.repeats) : getResources().getString(R.string.seconds));
         isRepeats1 = exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS);
 
         exName2.setText(exerciseJson.getString(Constatnts.ExerciseJson.NAME2));
         machineNum2.setText(exerciseJson.getString(Constatnts.ExerciseJson.METHOD_DESCRIPTION2));
         weight2.setText(String.valueOf(exerciseJson.getInt(Constatnts.ExerciseJson.WEIGHT2)));
         repeats2.setText(String.valueOf(exerciseJson.getInt(Constatnts.ExerciseJson.REPEATS2)));
-        repeats2view.setText(exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS2) ? "Repeats" : "Seconds");
+        repeats2view.setText(exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS2) ? getResources().getString(R.string.repeats) : getResources().getString(R.string.seconds));
         isRepeats2 = exerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS2);
     }
 
@@ -198,10 +198,10 @@ public class EditExerciseActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (isSingle) {
-                    singleDouble.setText("Double");
+                    singleDouble.setText(getResources().getString(R.string.double_t));
                     secondEx.setVisibility(View.VISIBLE);
                 } else {
-                    singleDouble.setText("Single");
+                    singleDouble.setText(getResources().getString(R.string.single));
                     secondEx.setVisibility(View.GONE);
                 }
                 isSingle = !isSingle;
@@ -215,17 +215,17 @@ public class EditExerciseActivity extends Activity {
 
     public void setRepeat1(View v){
         if (isRepeats1)
-            repeats1view.setText("Seconds");
+            repeats1view.setText(getResources().getString(R.string.seconds));
         else
-            repeats1view.setText("Repeats");
+            repeats1view.setText(getResources().getString(R.string.repeats));
         isRepeats1 = !isRepeats1;
     }
 
     public void setRepeat2(View v){
         if(isRepeats2)
-            repeats2view.setText("Seconds");
+            repeats2view.setText(getResources().getString(R.string.seconds));
         else
-            repeats2view.setText("Repeats");
+            repeats2view.setText(getResources().getString(R.string.repeats));
         isRepeats2 = !isRepeats2;
     }
 
@@ -256,8 +256,7 @@ public class EditExerciseActivity extends Activity {
 
         String ex1name = String.valueOf(exName1.getText());
         if (muscleGroup == null || muscleGroup.length() == 0 || ex1name == null || ex1name.length() ==0) {
-//            Toast.makeText(this, "Please enter Muscle Group and Exercise Name", Toast.LENGTH_SHORT).show();
-            Utils.popToast(this, "Please enter Muscle Group and Exercise Name", Toast.LENGTH_SHORT);
+            Utils.popToast(this, getResources().getString(R.string.exercise_def_err), Toast.LENGTH_SHORT);
             return;
         }
 

@@ -104,7 +104,7 @@ public class ExerciseExecutionSummaryActivity extends Activity {
         getAllExecutions();
         getAndSetViews();
         chartStuff();
-        getActionBar().setTitle("LOG");
+        getActionBar().setTitle(getResources().getString(R.string.log));
     }
 
     private void chartStuff() {
@@ -171,8 +171,8 @@ public class ExerciseExecutionSummaryActivity extends Activity {
         data = new LineChartData(lines);
         Axis axisX = Axis.generateAxisFromCollection(generatePointsAxis(),generateDatesAxis());
         Axis axisY = new Axis().setHasLines(true);
-        axisX.setName("Workout Date");
-        axisY.setName("Weight");
+        axisX.setName(getResources().getString(R.string.workout_date));
+        axisY.setName(getResources().getString(R.string.weight));
 
         data.setAxisXBottom(axisX);
         data.setAxisYLeft(axisY);
@@ -253,13 +253,13 @@ public class ExerciseExecutionSummaryActivity extends Activity {
         mExerciseNameText.setText(mExercise.getExercise());
 
         mMuscleNameText = (TextView)findViewById(R.id.muscle_name_s);
-        mMuscleNameText.setText("Muscle Group: " + mExercise.getTitle());
+        mMuscleNameText.setText(getResources().getString(R.string.muscle_group)+ " " + mExercise.getTitle());
 
         mPlanNameText = (TextView)findViewById(R.id.in_plan_name_s);
-        mPlanNameText.setText("Plan Name: " + mPlanID);
+        mPlanNameText.setText(getResources().getString(R.string.plan_name) + mPlanID);
 
         mCompletionText = (TextView)findViewById(R.id.average_completion_s);
-        mCompletionText.setText("Average Completion: " + Utils.getDBHelper().getExerciseAverageCompletion(String.valueOf(mExerciseID)) + "%");
+        mCompletionText.setText(getResources().getString(R.string.avg_completed) + Utils.getDBHelper().getExerciseAverageCompletion(String.valueOf(mExerciseID)) + "%");
 
         mChart = (LineChartView)findViewById(R.id.exercise_chart);
     }
