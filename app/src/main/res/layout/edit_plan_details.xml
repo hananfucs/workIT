@@ -117,6 +117,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/times_per_week"
                 android:layout_weight="1"
+                android:gravity="left"
                 android:layout_gravity="left|center_vertical"
                 android:layout_alignRight="@+id/linearLayout"/>
 
@@ -139,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_weight="1"
+                android:gravity="left"
                 android:text="@string/expiration"
                 android:layout_alignRight="@+id/linearLayout"/>
 

@@ -48,7 +48,7 @@ public class WorkoutLogActivity extends Activity implements ExpandableListView.O
         // setting list adapter
         expListView.setAdapter(listAdapter);
         expListView.setOnChildClickListener(this);
-        getActionBar().setTitle("LOG");
+        getActionBar().setTitle(getResources().getString(R.string.log));
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -70,6 +71,8 @@ public class EditExerciseActivity extends Activity {
         initUIActions();
         currentPlan = getIntent().getStringExtra(IPlan.PLAN_NAME);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
     }
 
@@ -246,6 +249,18 @@ public class EditExerciseActivity extends Activity {
         repeats2 = (EditText)findViewById(R.id.ex_repeats_2);
         repeats1view = (TextView)findViewById(R.id.ex_length1);
         repeats2view = (TextView)findViewById(R.id.ex_length2);
+
+        TextView breakLeft = (TextView)findViewById(R.id.break_left_text);
+        TextView breakRight = (TextView)findViewById(R.id.break_right_text);
+
+        if (Constatnts.HEB) {
+            breakLeft.setText(getResources().getString(R.string.seconds));
+            breakRight.setText(getResources().getString(R.string.break_t));
+        } else {
+            breakLeft.setText(getResources().getString(R.string.break_t));
+            breakRight.setText(getResources().getString(R.string.seconds));
+        }
+
     }
 
     public void saveAndReturn(View v){

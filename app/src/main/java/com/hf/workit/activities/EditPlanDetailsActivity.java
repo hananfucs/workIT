@@ -15,6 +15,7 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -85,6 +86,8 @@ public class EditPlanDetailsActivity extends Activity {
         getActionBar().setTitle(getResources().getString(R.string.details));
         getActionBar().setDisplayHomeAsUpEnabled(true);
         mContext = this;
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     @Override

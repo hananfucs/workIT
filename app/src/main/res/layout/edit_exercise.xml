@@ -25,6 +25,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/muscle_layout"
             android:layout_gravity="center_horizontal">
 
             <TextView
@@ -32,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/muscle_group"
+                android:id="@+id/muscle_group_txt"
                 android:layout_alignRight="@+id/linearLayout"/>
             <Space
                 android:layout_width="10dp"
@@ -87,8 +89,9 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/break_t"
                 android:layout_weight="1"
+                android:gravity="left"
+                android:id="@+id/break_left_text"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <EditText
@@ -98,6 +101,7 @@
                 android:inputType="numberDecimal"
                 android:layout_weight="3"
                 android:lines="1"
+                android:gravity="center"
                 android:singleLine="true"
                 android:layout_gravity="center_horizontal" />
 
@@ -105,8 +109,9 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/seconds"
                 android:layout_weight="1"
+                android:gravity="right"
+                android:id="@+id/break_right_text"
                 android:layout_alignRight="@+id/linearLayout"/>
         </LinearLayout>
 
@@ -116,7 +121,7 @@
 
         <Button
             android:id = "@+id/gallery"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/pictures"
             android:onClick="openGallery"/>
@@ -163,6 +168,7 @@
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
                 android:text="@string/description"
                 android:layout_alignRight="@+id/linearLayout"/>
 
@@ -192,6 +198,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/weight"
+                android:gravity="left"
                 android:layout_alignRight="@+id/linearLayout"/>
 
             <EditText

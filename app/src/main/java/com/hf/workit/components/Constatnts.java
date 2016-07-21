@@ -3,12 +3,14 @@ package com.hf.workit.components;
 import android.os.Environment;
 
 import java.io.File;
+import java.util.Locale;
 
 /**
  * Created by hanan on 31/03/16.
  */
 public class Constatnts {
     public static final String PICTURES_DIR = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + "workit/";
+    public static final boolean HEB = Locale.getDefault().getLanguage().equals("iw");
     public static final String PLANS_FILE_NAME = "data.dat";
     public static final String AC_FILE_NAME = "ac.dat";
     public static final String CARDIO_FILE_NAME = "cardio.dat";

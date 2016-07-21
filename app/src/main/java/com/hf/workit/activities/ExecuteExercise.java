@@ -17,10 +17,13 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.annotation.StyleRes;
 import android.support.v4.app.NavUtils;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -152,7 +155,6 @@ public class ExecuteExercise extends Activity {
         mAmount = mCurrentExerciseJson.getInt(Constatnts.ExerciseJson.REPEATS);
         mUnitText.setText(mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS) ? getResources().getString(R.string.repeats) : getResources().getString(R.string.seconds));
         isRepeats = mCurrentExerciseJson.getBoolean(Constatnts.ExerciseJson.IS_REPEATS);
-        mWeightText.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.WEIGHT));
         mBreakTime = mCurrentExerciseJson.getInt(Constatnts.ExerciseJson.BREAK);
 
         if (LogManager.getExerciseExecution(currentExerciseID) != 0)
@@ -160,6 +162,27 @@ public class ExecuteExercise extends Activity {
         else
             setsCounter = mCurrentExerciseJson.getInt(Constatnts.ExerciseJson.NUM_OF_SETS);
 
+        LinearLayout weight1Layout = (LinearLayout)findViewById(R.id.weight_layout_1);
+        mWeightText = new TextView(weight1Layout.getContext());
+        mWeightText.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.WEIGHT));
+        TextView weight1Title = new TextView(weight1Layout.getContext());
+        ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mWeightText.setLayoutParams(lparams);
+        mWeightText.setTextAppearance(weight1Layout.getContext(), android.R.style.TextAppearance_Large);
+        weight1Title.setLayoutParams(lparams);
+        weight1Title.setText(getResources().getString(R.string.weight));
+        weight1Title.setGravity(Gravity.LEFT);
+        weight1Title.setTextAppearance(weight1Layout.getContext(), android.R.style.TextAppearance_Large);
+
+        if(Constatnts.HEB) {
+            weight1Layout.addView(weight1Title, 0);
+            weight1Layout.addView(mWeightText, 0);
+
+        } else {
+            weight1Layout.addView(mWeightText, 0);
+            weight1Layout.addView(weight1Title, 0);
+        }
 
         if (isDouble) {
             mExerciseNameText2.setText(mCurrentExerciseJson.getString(Constatnts.ExerciseJson.NAME2));
@@ -182,13 +205,11 @@ public class ExecuteExercise extends Activity {
         mSetsLeftText = (TextView)findViewById(R.id.sets_left);
         mAmountText = (TextView)findViewById(R.id.amount_left);
         mUnitText = (TextView)findViewById(R.id.units_each_set);
-        mWeightText = (TextView)findViewById(R.id.weight);
         mClockText = (TextView)findViewById(R.id.exercise_clock_1);
         mBreakClockText = (TextView)findViewById(R.id.break_clock);
         mBreakClockText.setText("");
         mStartButton = (Button)findViewById(R.id.button_start);
         mClockText.setTypeface(null, Typeface.BOLD);
-
 
         if(mCurrentExercise instanceof DoubleExercise) {
             LinearLayout ex2Layout = (LinearLayout)findViewById(R.id.exercise_exec_2);
@@ -402,6 +423,7 @@ public class ExecuteExercise extends Activity {
         nm.cancel(232);
         stopService(new Intent(this, ClockService.class));
         LogManager.setCurrentExercisePhase(PHASE_NONE);
+        unregisterReceiver(mClockReceiver);
         finish();
     }
 

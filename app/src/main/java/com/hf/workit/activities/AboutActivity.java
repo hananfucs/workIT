@@ -6,10 +6,14 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hf.workit.R;
+import com.hf.workit.components.Constatnts;
 
 import org.w3c.dom.Text;
 
@@ -28,8 +32,33 @@ public class AboutActivity extends Activity {
             e.printStackTrace();
         }
         String version = pInfo.versionName;
-        TextView versionText = (TextView)findViewById(R.id.version_text);
+
+        LinearLayout versionLayout = (LinearLayout)findViewById(R.id.version_layout);
+
+        TextView title = new TextView(versionLayout.getContext());
+        title.setText(getResources().getString(R.string.version));
+
+        TextView versionText = new TextView(versionLayout.getContext());
+        versionText.setText(getResources().getString(R.string.last_workout));
+
+        ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        title.setLayoutParams(lparams);
+        versionText.setLayoutParams(lparams);
         versionText.setText(version);
+
+        if(Constatnts.HEB) {
+            versionLayout.addView(title, 0);
+            versionLayout.addView(versionText, 0);
+        } else {
+            versionLayout.addView(versionText, 0);
+            versionLayout.addView(title, 0);
+        }
+
+
+//        TextView versionText = (TextView)findViewById(R.id.version_text);
+//        versionText.setText(version);
     }
 
     public void contactHanan(View v) {

@@ -51,7 +51,7 @@
     <string name="pictures">"Pictures"</string>
     <string name="name">"Name"</string>
     <string name="description">"Description"</string>
-    <string name="weight">"Weight"</string>
+    <string name="weight">"Weight: "</string>
     <string name="repeats">"Repeats"</string>
     <string name="save">"Save"</string>
 
@@ -69,7 +69,7 @@
     <string name="sets_left">"Sets Left"</string>
     <string name="welcome">"Welcome!"</string>
     <string name="start_workout_now">"Start Workout Now!"</string>
-    <string name="last_workout">"Last Workout"</string>
+    <string name="last_workout">"Last Workout: "</string>
     <string name="finish_workout">"Finish Workout"</string>
     <string name="edit_plan">"Edit Plan"</string>
 
@@ -122,7 +122,7 @@
     <string name="about">"About"</string>
     <string name="double_back">"Press 'Back' again to exit"</string>
     <string name="completed">"Completed"</string>
-    <string name="no_workouts">"No WOrkouts Recorded"</string>
+    <string name="no_workouts">"No Workouts Recorded"</string>
     <string name="gym">"Gym"</string>
     <string name="cardio">"Cardio"</string>
     <string name="creation">"Creation"</string>
@@ -145,5 +145,17 @@
     <string name="workout_complete">"Workout Complete"</string>
     <string name="great_job">"Great Job!"</string>
     <string name="plan">"Plan"</string>
+
+    <string name="whistle_desc">"Sound a whistle when time runs out."</string>
+    <string name="vibrate_desc">"Vibrate when time runs out"</string>
+    <string name="countdown_desc">"Allow a countdown before starting an exercise"</string>
+
+    <string name="swipe1">"<font color='white'>></font><font color='black'>></font><font color='black'>></font> swipe for options"</string>
+    <string name="swipe2">"<font color='black'>></font><font color='white'>></font><font color='black'>></font> swipe for options"</string>
+    <string name="swipe3">"<font color='black'>></font><font color='black'>></font><font color='white'>></font> swipe for options"</string>
+
+    <string name="time_left">"Time Left for "</string>
+    <string name="time_left_break">"Time Left for Break: "</string>
+
 </resources>
 

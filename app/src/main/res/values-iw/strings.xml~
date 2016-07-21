@@ -1,0 +1,150 @@
+<resources>
+    <string name="app_name">workIT</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="start_workout_btn">Start Workout</string>
+    <string name="edit_workout_btn">Edit Plans</string>
+    <string name="log_btn">Workout Log</string>
+    <string name="view_workout_btn">View Plans</string>
+    <string name="title_activity_main_log">MainLog</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">"Open"</string>
+    <string name="navigation_drawer_close">"Close"</string>
+
+    <!--About-->
+    <string name="version">"גרסא"</string>
+    <string name="code_design_concept">"רעיון, קוד, עיצוב:"</string>
+    <string name="dev_name">"חנן פוקס"</string>
+    <string name="dev_email">"hananfu@gmail.com"</string>
+
+    <string name="icons">"אייקונים"</string>
+    <string name="icons_sup">"Google"</string>
+
+    <string name="graphs">"גרפים"</string>
+    <string name="graphs_sup">"HelloCharts"</string>
+
+    <string name="share">"שירות שיתוף"</string>
+    <string name="share_sup">"paste.ee"</string>
+
+    <!--Add Cardio-->
+    <string name="time">"משך זמן"</string>
+    <string name="distance">"מרחק"</string>
+    <string name="calories">"קלוריות"</string>
+    <string name="date">"תאריך"</string>
+    <string name="add">"הוסף"</string>
+    <string name="today">"היום"</string>
+    <string name="cancel">"ביטול"</string>
+    <string name="plan_expiration">"תוקף התוכנית"</string>
+    <string name="add_workout">"הוסף אימון"</string>
+    <string name="share_only">"שתף"</string>
+    <string name="delete">"מחק"</string>
+
+    <!--Edit Exercise-->
+    <string name="muscle_group">"קבוצת שרירים"</string>
+    <string name="single">"סינגל"</string>
+    <string name="num_of_sets">"מספר סטים"</string>
+    <string name="break_t">"הפסקה"</string>
+    <string name="seconds">"שניות"</string>
+    <string name="pictures">"תמונות"</string>
+    <string name="name">"שם"</string>
+    <string name="description">"תיאור"</string>
+    <string name="weight">"משקל"</string>
+    <string name="repeats">"חזרות"</string>
+    <string name="save">"שמור"</string>
+
+    <!--Edit Plan Details-->
+    <string name="trainer">"מאמן"</string>
+    <string name="club">"מועדון"</string>
+    <string name="times_per_week">"פעמים בשבוע"</string>
+    <string name="expiration">"תוקף"</string>
+    <string name="choose_date">"בחר תאריך"</string>
+    <string name="exercises">"תרגילים"</string>
+
+    <!--Execute Exercise-->
+    <string name="start_ex_1">"התחל תרגיל 1"</string>
+    <string name="start_ex_2">"התחל תרגיל 2"</string>
+    <string name="sets_left">"סטים נשארו"</string>
+    <string name="welcome">"ברוך הבא"</string>
+    <string name="start_workout_now">"התחל אימון עכשיו!"</string>
+    <string name="last_workout">"אימון אחרון"</string>
+    <string name="finish_workout">"סיים אימון"</string>
+    <string name="edit_plan">"ערוך תוכנית"</string>
+
+
+    <!--Add Cardio-->
+    <string name="valid_values">"אנא מלא שדות תקינים"</string>
+    <string name="add_cardio">"הוסף תרגיל אירובי"</string>
+    <string name="exercise_name">"שם התרגיל"</string>
+    <string name="already_have">"כבר קיים"</string>
+    <string name="log">"יומן"</string>
+    <string name="workout_date">"תאריך אימון"</string>
+    <string name="minutes">"דקות"</string>
+    <string name="share_image">"שתף תמונה"</string>
+    <string name="edit_exercise">"ערוך תרגיל"</string>
+    <string name="double_t">"דאבל"</string>
+    <string name="exercise_def_err">"אנא הכנס שם תרגיל וקבוצת שרירים"</string>
+    <string name="details">"פרטים"</string>
+    <string name="plan_name_err">"ראשית הכנס שם תוכנית"</string>
+    <string name="nothing_to_save">"אין מה לשמור "</string>
+    <string name="delete_plan">"מחק תוכנית"</string>
+    <string name="delete_plan_msg">"למחוק תוכנית - האם אתה בטוח?"</string>
+    <string name="please_wait">"אנא המתן..."</string>
+    <string name="no_internet">"אין חיבור לאינטרנט"</string>
+    <string name="share_code">"קוד שיתוף:"</string>
+    <string name="plans">"תוכניות"</string>
+    <string name="create_new_plan">"צוטר תוכנית חדשה"</string>
+    <string name="new_plan_or_code">"כתוב תוכנית חדשה או צור מקוד שיתוף?"</string>
+    <string name="create_new">"כתוב תוכנית חדשה"</string>
+    <string name="insert_code">"הכנס קוד שיתוף"</string>
+    <string name="oops">"אופס! משהו השתבש"</string>
+    <string name="done">"סיימתי"</string>
+    <string name="go">"קדימה"</string>
+    <string name="go_go_go">"קדימה קדימה!!!"</string>
+    <string name="finish_exercise">"סיים תרגיל"</string>
+    <string name="finish_exercise_msg">"לסיים את התרגיל - האם אתה בטוח?"</string>
+    <string name="plan_name">"שם תוכנית "</string>
+    <string name="avg_completed">" אחוז ביצוע ממוצע"</string>
+    <string name="get_new_pic">"הוסף תמונה"</string>
+    <string name="get_new_pic_msg">"צלם תמונה או הוסף מהגלריה?"</string>
+    <string name="take_pic">"צלם תמונה"</string>
+    <string name="from_gallery">"קח מהגלריה"</string>
+    <string name="avg_times_per_week">"ממוצע פעמים לשבוע"</string>
+    <string name="avg_length">"אורך ממוצע"</string>
+    <string name="avg_percentage">" ממוצע אחוזי ביצוע"</string>
+
+    <string name="start_workout">"התחל אימון"</string>
+    <string name="workout_log">"יומן אימונים"</string>
+    <string name="edit_plans">"ערוך תוכניות"</string>
+    <string name="settings">"הגדרות"</string>
+    <string name="about">"אודות"</string>
+    <string name="double_back">"לחץ 'חזור' שוב בשביל לצאת"</string>
+    <string name="completed">"הושלם"</string>
+    <string name="no_workouts">"אין אימונים"</string>
+    <string name="gym">"חדר כושר"</string>
+    <string name="cardio">"אירובי"</string>
+    <string name="creation">"יצירה"</string>
+    <string name="workout_num">"תאריך אימון"</string>
+    <string name="percentage_completed">"אחוזי ביצוע"</string>
+    <string name="length">"אורך"</string>
+    <string name="current_weight">" משקל נוכחי"</string>
+    <string name="start">"התחל"</string>
+    <string name="expired">"פג תוקף"</string>
+    <string name="expires_in">"פג בעוד "</string>
+    <string name="days">"ימים"</string>
+    <string name="start_another_workout">"התחל אימון אחר"</string>
+    <string name="start_another_workout_msg_1">"בטוח רוצה לסיים את האימון  "</string>
+    <string name="start_another_workout_msg_2">" ולהתחיל את "</string>
+    <string name="vibrate">"רטט"</string>
+    <string name="whistle">"שריקה"</string>
+    <string name="countdown">"ספירה לאחור"</string>
+    <string name="end_workout_msg">"בטוח רוצה לסיים את האימון הזה?"</string>
+    <string name="workout_not_complete">"האימון לא הושלם"</string>
+    <string name="workout_complete">"האימון הושלם"</string>
+    <string name="great_job">"עבודה מצויינת!"</string>
+    <string name="plan">"תוכנית"</string>
+</resources>
+
+

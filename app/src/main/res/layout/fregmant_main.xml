@@ -39,25 +39,12 @@
             android:layout_width="match_parent"
             android:layout_height="40dp" />
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:id = "@+id/last_workout_layout"
+        android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:gravity="center"
+        android:gravity="center|top"
+        android:layout_gravity="top"
         android:layout_height="fill_parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:text="@string/last_workout"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/last_workout_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:text="N\A"
-            android:textSize="20dp"/>
-
     </LinearLayout>
     </LinearLayout>
 

@@ -123,10 +123,10 @@ public class ClockService extends Service {
         switch (mCurrentPhase){
             case ExecuteExercise.PHASE_EX_1:
             case ExecuteExercise.PHASE_EX_2:
-                notificationTitle = "Time Left for " + mTitle;
+                notificationTitle = getResources().getString(R.string.time_left) + mTitle;
                 break;
             case ExecuteExercise.PHASE_BREAK:
-                notificationTitle = "Time Left for Break: ";
+                notificationTitle = getResources().getString(R.string.time_left_break);
                 break;
         }
 
